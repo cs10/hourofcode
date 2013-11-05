@@ -9492,15 +9492,15 @@ HandMorph.prototype.processTouchStart = function (event) {
     MorphicPreferences.isTouchDevice = true;
     clearInterval(this.touchHoldTimeout);
     if (event.touches.length === 1) {
-        this.touchHoldTimeout = setInterval( // simulate mouseRightClick
-            function () {
-                myself.processMouseDown({button: 2});
-                myself.processMouseUp({button: 2});
-                event.preventDefault();
-                clearInterval(myself.touchHoldTimeout);
-            },
-            400
-        );
+        //this.touchHoldTimeout = setInterval( // simulate mouseRightClick
+            //function () {
+                //myself.processMouseDown({button: 2});
+                //myself.processMouseUp({button: 2});
+                //event.preventDefault();
+                //clearInterval(myself.touchHoldTimeout);
+            //},
+            //400
+        //);
         this.processMouseMove(event.touches[0]); // update my position
         this.processMouseDown({button: 0});
         event.preventDefault();
@@ -10345,17 +10345,6 @@ WorldMorph.prototype.initEventListeners = function () {
         },
         false
     );
-
-    window.onbeforeunload = function (evt) {
-        var e = evt || window.event,
-            msg = "Are you sure you want to leave?";
-        // For IE and Firefox
-        if (e) {
-            e.returnValue = msg;
-        }
-        // For Safari / chrome
-        return msg;
-    };
 };
 
 WorldMorph.prototype.mouseDownLeft = function () {

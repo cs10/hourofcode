@@ -1,0 +1,6 @@
+X Figure out confirm navigation.
+? Remove pause button
+? Remove smaller canvas button
+_ Make the icons bigger.
+_ Remove sprites
+_ Remove categories

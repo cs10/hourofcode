@@ -1515,7 +1515,8 @@ SpriteMorph.prototype.blockTemplates = function (category) {
         return menu;
     }
 
-    if (cat === 'motion') {
+    //if (cat === 'motion') {
+    blocks.push('=');
 
         blocks.push(block('forward'));
         blocks.push(block('turn'));
@@ -1542,7 +1543,8 @@ SpriteMorph.prototype.blockTemplates = function (category) {
         blocks.push(watcherToggle('direction'));
         blocks.push(block('direction'));
 
-    } else if (cat === 'looks') {
+    //} else if (cat === 'looks') {
+    blocks.push('=');
 
         blocks.push(block('doSwitchToCostume'));
         blocks.push(block('doWearNextCostume'));
@@ -1571,22 +1573,23 @@ SpriteMorph.prototype.blockTemplates = function (category) {
 
     // for debugging: ///////////////
 
-        if (this.world().isDevMode) {
-            blocks.push('-');
-            txt = new TextMorph(localize(
-                'development mode \ndebugging primitives:'
-            ));
-            txt.fontSize = 9;
-            txt.setColor(this.paletteTextColor);
-            blocks.push(txt);
-            blocks.push('-');
-            blocks.push(block('log'));
-            blocks.push(block('alert'));
-        }
+        //if (this.world().isDevMode) {
+            //blocks.push('-');
+            //txt = new TextMorph(localize(
+                //'development mode \ndebugging primitives:'
+            //));
+            //txt.fontSize = 9;
+            //txt.setColor(this.paletteTextColor);
+            //blocks.push(txt);
+            //blocks.push('-');
+            //blocks.push(block('log'));
+            //blocks.push(block('alert'));
+        //}
 
     /////////////////////////////////
 
-    } else if (cat === 'sound') {
+    //} else if (cat === 'sound') {
+    blocks.push('=');
 
         blocks.push(block('playSound'));
         blocks.push(block('doPlaySoundUntilDone'));
@@ -1601,7 +1604,8 @@ SpriteMorph.prototype.blockTemplates = function (category) {
         blocks.push(watcherToggle('getTempo'));
         blocks.push(block('getTempo'));
 
-    } else if (cat === 'pen') {
+    //} else if (cat === 'pen') {
+    blocks.push('=');
 
         blocks.push(block('clear'));
         blocks.push('-');
@@ -1620,7 +1624,8 @@ SpriteMorph.prototype.blockTemplates = function (category) {
         blocks.push('-');
         blocks.push(block('doStamp'));
 
-    } else if (cat === 'control') {
+    //} else if (cat === 'control') {
+    blocks.push('=');
 
         blocks.push(block('receiveGo'));
         blocks.push(block('receiveKey'));
@@ -1670,7 +1675,8 @@ SpriteMorph.prototype.blockTemplates = function (category) {
         blocks.push('-');
         blocks.push(block('doPauseAll'));
 
-    } else if (cat === 'sensing') {
+    //} else if (cat === 'sensing') {
+    blocks.push('=');
 
         blocks.push(block('reportTouchingObject'));
         blocks.push(block('reportTouchingColor'));
@@ -1701,22 +1707,23 @@ SpriteMorph.prototype.blockTemplates = function (category) {
 
     // for debugging: ///////////////
 
-        if (this.world().isDevMode) {
+        //if (this.world().isDevMode) {
 
-            blocks.push('-');
-            txt = new TextMorph(localize(
-                'development mode \ndebugging primitives:'
-            ));
-            txt.fontSize = 9;
-            txt.setColor(this.paletteTextColor);
-            blocks.push(txt);
-            blocks.push('-');
-            blocks.push(block('colorFiltered'));
-            blocks.push(block('reportStackSize'));
-            blocks.push(block('reportFrameCount'));
-        }
+            //blocks.push('-');
+            //txt = new TextMorph(localize(
+                //'development mode \ndebugging primitives:'
+            //));
+            //txt.fontSize = 9;
+            //txt.setColor(this.paletteTextColor);
+            //blocks.push(txt);
+            //blocks.push('-');
+            //blocks.push(block('colorFiltered'));
+            //blocks.push(block('reportStackSize'));
+            //blocks.push(block('reportFrameCount'));
+        //}
 
-    } else if (cat === 'operators') {
+    //} else if (cat === 'operators') {
+    blocks.push('=');
 
         blocks.push(block('reifyScript'));
         blocks.push(block('reifyReporter'));
@@ -1757,22 +1764,23 @@ SpriteMorph.prototype.blockTemplates = function (category) {
 
     // for debugging: ///////////////
 
-        if (this.world().isDevMode) {
-            blocks.push('-');
-            txt = new TextMorph(
-                'development mode \ndebugging primitives:'
-            );
-            txt.fontSize = 9;
-            txt.setColor(this.paletteTextColor);
-            blocks.push(txt);
-            blocks.push('-');
-            blocks.push(block('reportTypeOf'));
-            blocks.push(block('reportTextFunction'));
-        }
+        //if (this.world().isDevMode) {
+            //blocks.push('-');
+            //txt = new TextMorph(
+                //'development mode \ndebugging primitives:'
+            //);
+            //txt.fontSize = 9;
+            //txt.setColor(this.paletteTextColor);
+            //blocks.push(txt);
+            //blocks.push('-');
+            //blocks.push(block('reportTypeOf'));
+            //blocks.push(block('reportTextFunction'));
+        //}
 
     /////////////////////////////////
 
-    } else if (cat === 'variables') {
+    //} else if (cat === 'variables') {
+    blocks.push('=');
 
         button = new PushButtonMorph(
             null,
@@ -1859,17 +1867,17 @@ SpriteMorph.prototype.blockTemplates = function (category) {
 
     // for debugging: ///////////////
 
-        if (this.world().isDevMode) {
-            blocks.push('-');
-            txt = new TextMorph(localize(
-                'development mode \ndebugging primitives:'
-            ));
-            txt.fontSize = 9;
-            txt.setColor(this.paletteTextColor);
-            blocks.push(txt);
-            blocks.push('-');
-            blocks.push(block('reportMap'));
-        }
+        //if (this.world().isDevMode) {
+            //blocks.push('-');
+            //txt = new TextMorph(localize(
+                //'development mode \ndebugging primitives:'
+            //));
+            //txt.fontSize = 9;
+            //txt.setColor(this.paletteTextColor);
+            //blocks.push(txt);
+            //blocks.push('-');
+            //blocks.push(block('reportMap'));
+        //}
 
     /////////////////////////////////
 
@@ -1916,7 +1924,7 @@ SpriteMorph.prototype.blockTemplates = function (category) {
         button.selector = 'addCustomBlock';
         button.showHelp = BlockMorph.prototype.showHelp;
         blocks.push(button);
-    }
+    //}
     return blocks;
 };
 

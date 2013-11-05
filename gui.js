@@ -444,7 +444,7 @@ IDE_Morph.prototype.createLogo = function () {
 
     this.logo.color = new Color();
     this.logo.setExtent(new Point(200, 28)); // dimensions are fixed
-    this.add(this.logo);
+    //this.add(this.logo);
 };
 
 IDE_Morph.prototype.createControlBar = function () {
@@ -508,7 +508,7 @@ IDE_Morph.prototype.createControlBar = function () {
     button.fixLayout();
     button.refresh();
     stageSizeButton = button;
-    this.controlBar.add(stageSizeButton);
+    //this.controlBar.add(stageSizeButton);
     this.controlBar.stageSizeButton = button; // for refreshing
 
     //appModeButton
@@ -594,7 +594,7 @@ IDE_Morph.prototype.createControlBar = function () {
     button.fixLayout();
     button.refresh();
     pauseButton = button;
-    this.controlBar.add(pauseButton);
+    //this.controlBar.add(pauseButton);
     this.controlBar.pauseButton = pauseButton; // for refreshing
 
     // startButton
@@ -641,7 +641,7 @@ IDE_Morph.prototype.createControlBar = function () {
     // button.hint = 'open, save, & annotate project';
     button.fixLayout();
     projectButton = button;
-    this.controlBar.add(projectButton);
+    //this.controlBar.add(projectButton);
     this.controlBar.projectButton = projectButton; // for menu positioning
 
     // settingsButton
@@ -665,7 +665,7 @@ IDE_Morph.prototype.createControlBar = function () {
     // button.hint = 'edit settings';
     button.fixLayout();
     settingsButton = button;
-    this.controlBar.add(settingsButton);
+    //this.controlBar.add(settingsButton);
     this.controlBar.settingsButton = settingsButton; // for menu positioning
 
     // cloudButton
@@ -688,7 +688,7 @@ IDE_Morph.prototype.createControlBar = function () {
     // button.hint = 'cloud operations';
     button.fixLayout();
     cloudButton = button;
-    this.controlBar.add(cloudButton);
+    //this.controlBar.add(cloudButton);
     this.controlBar.cloudButton = cloudButton; // for menu positioning
 
     this.controlBar.fixLayout = function () {
@@ -738,7 +738,7 @@ IDE_Morph.prototype.createControlBar = function () {
         }
 
         this.label = new StringMorph(
-            (myself.projectName || localize('untitled')) + suffix,
+            '' + suffix,
             14,
             'sans-serif',
             true,
@@ -845,7 +845,7 @@ IDE_Morph.prototype.createCategories = function () {
         }
     });
     fixCategoriesLayout();
-    this.add(this.categories);
+    //this.add(this.categories);
 };
 
 IDE_Morph.prototype.createPalette = function () {
@@ -922,7 +922,7 @@ IDE_Morph.prototype.createSpriteBar = function () {
 
     this.spriteBar = new Morph();
     this.spriteBar.color = this.frameColor;
-    this.add(this.spriteBar);
+    //this.add(this.spriteBar);
 
     function addRotationStyleButton(rotationStyle) {
         var colors = myself.rotationStyleColors,
@@ -1212,7 +1212,7 @@ IDE_Morph.prototype.createCorralBar = function () {
     this.corralBar = new Morph();
     this.corralBar.color = this.frameColor;
     this.corralBar.setHeight(this.logo.height()); // height is fixed
-    this.add(this.corralBar);
+    //this.add(this.corralBar);
 
     // new sprite button
     newbutton = new PushButtonMorph(
@@ -1259,7 +1259,7 @@ IDE_Morph.prototype.createCorralBar = function () {
     paintbutton.setLeft(
         this.corralBar.left() + padding + newbutton.width() + padding
     );
-    this.corralBar.add(paintbutton);
+    //this.corralBar.add(paintbutton);
 };
 
 IDE_Morph.prototype.createCorral = function () {
@@ -1272,11 +1272,11 @@ IDE_Morph.prototype.createCorral = function () {
 
     this.corral = new Morph();
     this.corral.color = this.groupColor;
-    this.add(this.corral);
+    //this.add(this.corral);
 
     this.corral.stageIcon = new SpriteIconMorph(this.stage);
     this.corral.stageIcon.isDraggable = false;
-    this.corral.add(this.corral.stageIcon);
+    //this.corral.add(this.corral.stageIcon);
 
     frame = new ScrollFrameMorph(null, null, this.sliderColor);
     frame.acceptsDrops = false;
@@ -1298,7 +1298,7 @@ IDE_Morph.prototype.createCorral = function () {
     });
 
     this.corral.frame = frame;
-    this.corral.add(frame);
+    //this.corral.add(frame);
 
     this.corral.fixLayout = function () {
         this.stageIcon.setCenter(this.center());
@@ -3038,7 +3038,7 @@ IDE_Morph.prototype.toggleDynamicInputLabels = function () {
     SpriteMorph.prototype.initBlocks();
     this.spriteBar.tabBar.tabTo('scripts');
     this.createCategories();
-    this.createCorralBar();
+    //this.createCorralBar();
     this.openProjectString(projectData);
 };
 
@@ -3250,7 +3250,7 @@ IDE_Morph.prototype.reflectLanguage = function (lang, callback) {
     SpriteMorph.prototype.initBlocks();
     this.spriteBar.tabBar.tabTo('scripts');
     this.createCategories();
-    this.createCorralBar();
+    //this.createCorralBar();
     this.fixLayout();
     if (this.loadNewProject) {
         this.newProject();
@@ -3360,7 +3360,7 @@ IDE_Morph.prototype.setBlocksScale = function (num) {
     SpriteMorph.prototype.initBlocks();
     this.spriteBar.tabBar.tabTo('scripts');
     this.createCategories();
-    this.createCorralBar();
+    //this.createCorralBar();
     this.fixLayout();
     this.openProjectString(projectData);
     this.saveSetting('zoom', num);

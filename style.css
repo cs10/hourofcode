@@ -1,0 +1,35 @@
+html, body {
+    height: 100%;
+    overflow: hidden;
+}
+
+body {
+    font-family: 'Open Sans', sans-serif;
+}
+
+#top {
+    width: 100%;
+    text-align: center;
+}
+
+#left {
+    height: 80%;
+    width: 20%;
+    overflow: auto;
+    float: left;
+    border-top: 2px gray solid;
+    margin-bottom: 50px;
+}
+
+#right {
+    width: 80%;
+    float: right;
+}
+
+img {
+    width: 100%;
+}
+
+.lab_page {
+    padding: 10px;
+}
