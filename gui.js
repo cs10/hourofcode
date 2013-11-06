@@ -693,7 +693,8 @@ IDE_Morph.prototype.createControlBar = function () {
 
     this.controlBar.fixLayout = function () {
         x = this.right() - padding;
-        [stopButton, pauseButton, startButton].forEach(
+        //[stopButton, pauseButton, startButton].forEach(
+        [stopButton, startButton].forEach(
             function (button) {
                 button.setCenter(myself.controlBar.center());
                 button.setRight(x);
@@ -705,7 +706,8 @@ IDE_Morph.prototype.createControlBar = function () {
         x = myself.right() - (StageMorph.prototype.dimensions.x
             * (myself.isSmallStage ? myself.stageRatio : 1));
 
-        [stageSizeButton, appModeButton].forEach(
+        //[stageSizeButton, appModeButton].forEach(
+        [appModeButton].forEach(
             function (button) {
                 x += padding;
                 button.setCenter(myself.controlBar.center());
@@ -1373,8 +1375,13 @@ IDE_Morph.prototype.fixLayout = function (situation) {
 
     if (situation !== 'refreshPalette') {
         // controlBar
-        this.controlBar.setPosition(this.logo.topRight());
-        this.controlBar.setWidth(this.right() - this.controlBar.left());
+        var pos = this.stage.topRight();
+        pos.y -= this.controlBar.height() + padding;
+        pos.x -= this.controlBar.width();
+        this.controlBar.setPosition(pos);
+        this.controlBar.setWidth(this.stage.right() - this.stage.left());
+        //this.controlBar.setWidth(this.right() - this.controlBar.left());
+        //this.controlBar.setWidth(100);
         this.controlBar.fixLayout();
 
         // categories
@@ -1383,8 +1390,8 @@ IDE_Morph.prototype.fixLayout = function (situation) {
     }
 
     // palette
-    this.palette.setLeft(this.logo.left());
-    this.palette.setTop(this.categories.bottom());
+    this.palette.setLeft(this.left());
+    this.palette.setTop(this.top() + padding);
     this.palette.setHeight(this.bottom() - this.palette.top());
 
     if (situation !== 'refreshPalette') {
@@ -1399,12 +1406,16 @@ IDE_Morph.prototype.fixLayout = function (situation) {
         } else {
 //            this.stage.setScale(this.isSmallStage ? 0.5 : 1);
             this.stage.setScale(this.isSmallStage ? this.stageRatio : 1);
-            this.stage.setTop(this.logo.bottom() + padding);
-            this.stage.setRight(this.right());
+            //this.stage.setHeight(this.height());
+            this.stage.setTop(this.logo.bottom() + 2 * padding);
+            this.stage.setRight(this.right() - padding);
         }
 
         // spriteBar
-        this.spriteBar.setPosition(this.logo.bottomRight().add(padding));
+        var pos = this.logo.bottomRight();
+        pos.y = this.top();
+        this.spriteBar.setPosition(pos.add(padding));
+        //this.spriteBar.setPosition(this.logo.bottomRight().add(padding));
         this.spriteBar.setExtent(new Point(
             Math.max(0, this.stage.left() - padding - this.spriteBar.left()),
             this.categories.bottom() - this.spriteBar.top() - padding
@@ -1413,7 +1424,8 @@ IDE_Morph.prototype.fixLayout = function (situation) {
 
         // spriteEditor
         if (this.spriteEditor.isVisible) {
-            this.spriteEditor.setPosition(this.spriteBar.bottomLeft());
+            //this.spriteEditor.setPosition(this.spriteBar.bottomLeft());
+            this.spriteEditor.setPosition(pos.add(padding));
             this.spriteEditor.setExtent(new Point(
                 this.spriteBar.width(),
                 this.bottom() - this.spriteEditor.top()
@@ -1432,6 +1444,11 @@ IDE_Morph.prototype.fixLayout = function (situation) {
             this.corral.setHeight(this.bottom() - this.corral.top());
             this.corral.fixLayout();
         }
+
+        //this.tabEditor.setHeight(this.height());
+        //this.tabEditor.setTop(this.height());
+        //this.tabBar.setTop(this.top());
+        //this.spriteBar.setTop(this.top());
     }
 
     Morph.prototype.trackChanges = true;
@@ -1705,11 +1722,11 @@ IDE_Morph.prototype.applySavedSettings = function () {
         plainprototype = this.getSetting('plainprototype');
 
     // design
-    if (design === 'flat') {
+    //if (design === 'flat') {
         this.setFlatDesign();
-    } else {
-        this.setDefaultDesign();
-    }
+    //} else {
+        //this.setDefaultDesign();
+    //}
 
     // blocks zoom
     if (zoom) {
