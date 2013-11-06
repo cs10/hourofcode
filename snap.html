@@ -20,10 +20,27 @@
 		<script type="text/javascript" src="sha512.js"></script>
 		<script type="text/javascript">
 			var world;
+                        var ide;
+
+                        function load_project_xml(uri) {
+                                var request = new XMLHttpRequest ();
+                                request.onload = function () {
+                                        console.log('ide =', ide);
+                                        console.log('window.ide =', window.ide);
+                                        window.ide.droppedText(this.responseText);
+                                };
+                                request.open("get", uri, true);
+                                request.send();
+                        }
+
+                        window.load_project_xml = load_project_xml;
+
 			window.onload = function () {
 				world = new WorldMorph(document.getElementById('world'));
-				new IDE_Morph().openIn(world);
+				ide = new IDE_Morph();
+                                ide.openIn(world);
 				setInterval(loop, 1);
+                                load_project_xml("molemash.xml");
 			};
 			function loop() {
 				world.doOneCycle();

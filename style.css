@@ -24,13 +24,13 @@ body {
 #left {
     width: 30%;
     height: 80%;
-    overflow: scroll;
+    overflow: auto;
     float: left;
     margin-bottom: 50px;
 }
 
 #right {
-    height: 700px;
+    height: 90%;
     overflow: hidden;
 }
 
