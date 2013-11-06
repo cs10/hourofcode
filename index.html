@@ -1,33 +1,52 @@
-<html lang="en">
-<head>
+<html>
 <meta charset="utf-8"></meta>
-<title>Oh Snap!</title>
-<link rel="stylesheet" type="text/css" href="style.css">
-<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800,300' rel='stylesheet' type='text/css'>
+
+<head>
+    <title>Snap: Hour of Code</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800,300' rel='stylesheet' type='text/css'>
+    <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+    <link href='bootstrap/css/bootstrap.min.css' rel="stylesheet" type='text/css'>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+
+    <script src='runme.js'></script>
 </head>
 <body>
 
-<div id="top">
+    <div id="top">
+        <a id='bjclogo' href='http://bjc.berkeley.edu' target='_blank'><img style='float:left; width:120px; padding-top: 25px; padding-left:30px' src="images/bjc200.png"></a>
+        <div style='float:left; padding-left: 30px; padding-top: 25px; font-size: 50px; color: white'>Hour of Code</div>
 
-    <h1>Snap yo fingers</h1>
+    <div id='buttons' style='float:left; margin-top: 40px; margin-left: 100px; font-size: 30px' class='btn-group'>
+        <button onclick="load('marwahaha', 'tutorial1');" style='padding-left:20px; padding-right:20px; font-size: 30px' class='btn btn-default'>#1</button>
+        <button onclick="load('marwahaha', 'tutorial2');" style='padding-left:20px; padding-right:20px; font-size: 30px' class='btn btn-default'>#2</button>
+        <button onclick="load('Dan Garcia', 'Mole Mash');" style='padding-left:20px; padding-right:20px; font-size: 30px' class='btn btn-default'>#3</button>
+    </div>
+
+        <a href='http://code.org/congrats?i=' target='_blank'><div style='float:right; padding-right: 30px; padding-top: 20px; color: white'><button style='font-size: 30px;' class='btn btn-success'>I'm done!</button></div></a>
+
 
 </div>
+
+
+
+<br>
 <div id="left">
 
     <div id="page1" class="lab_page">
 
-        <h2> Part 1 </h2>
+        <h2>Part 1</h2>
 
         <img src="images/image12.png">
 
         <p>
         Have you wondered how animators create scenes like the ones above?
-        Well, it’s no surprise that converting this art to animation takes lots and lots of programming skill that is developed over time through countless trials and iterations.
-        Let’s see if we can break down this scene into smaller components and try our hand at building some graphics.
+        Well, it's no surprise that converting this art to animation takes lots and lots of programming skill that is developed over time through countless trials and iterations.
+        Let's see if we can break down this scene into smaller components and try our hand at building some graphics.
         </p>
 
         <p>
-        Let’s focus specifically on the tree.If you look closely at the picture, the tree itself is made up of a pattern of similar strokes. In this hour of code, we will teach you how to break down these patterns to have you code a tree of you own. You will be equipped with the basic framework, earning a technique from animators’ toolbox.
+        Let's focus specifically on the tree.If you look closely at the picture, the tree itself is made up of a pattern of similar strokes. In this hour of code, we will teach you how to break down these patterns to have you code a tree of you own. You will be equipped with the basic framework, earning a technique from animators' toolbox.
         </p>
 
         <p>
@@ -41,9 +60,9 @@
 
 </div>
 <div id="right">
-
-    <iframe width=100% height=80% src="snap.html"></iframe>
-
+    <div id='iframes'>
+        <iframe id='snap' width=100% height=100% src="snap.html"></iframe>
+    </div>
 </div>
 </body>
 </html>
