@@ -1436,6 +1436,8 @@ IDE_Morph.prototype.fixLayout = function (situation) {
         this.corralBar.setLeft(this.stage.left());
         this.corralBar.setTop(this.stage.bottom() + padding);
         this.corralBar.setWidth(this.stage.width());
+        window.videoPos = this.corralBar.position();
+        window.videoPos.width = this.corralBar.width();
 
         // corral
         if (!contains(['selectSprite', 'tabEditor'], situation)) {
