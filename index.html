@@ -11,60 +11,55 @@
 
     <script src='runme.js'></script>
 </head>
+
 <body>
 
-    <div id="top">
-        <a id='bjclogo' href='http://bjc.berkeley.edu' target='_blank'><img style='float:left; width:120px; padding-top: 25px; padding-left:30px' src="images/bjc200.png"></a>
-        <div class="page-title">Hour of Code</div>
+  <div id="top">
+    <a id='bjclogo' href='http://bjc.berkeley.edu' target='_blank'>
+      <img id='bjclogo-img' src="images/bjc200.png">
+    </a>
+    <div class="page-title">Hour of Code</div>
 
-    <div id='buttons' class="top-button-container btn-group">
-        <button onclick="btn_click(0);" style="font-size: 30px" class='btn-top btn btn-default'>#1</button>
-        <button onclick="btn_click(1);" style="font-size: 30px" class='btn-top btn btn-default'>#2</button>
-        <button onclick="btn_click(2);" style="font-size: 30px" class='btn-top btn btn-default'>#3</button>
-    </div>
+    <div id='buttons-top' class="top-button-container btn-group"></div>
 
-        <a href='http://code.org/congrats?i=' target='_blank'><div style='float:right; padding-right: 30px; padding-top: 20px; color: white'><button style='font-size: 30px;' class='btn btn-success'>I'm done!</button></div></a>
+    <a href='http://code.org/congrats?i=' target='_blank'>
+      <div id='done-button'>
+        <button style='font-size: 30px;' class='btn btn-success'>I'm done!</button>
+      </div>
+    </a>
+  </div>
 
+  <br>
 
-</div>
+  <div id="left">
 
+    <div class="lab-page">
+      <h2>Part 1</h2>
 
+      <p>
+      Have you wondered how animators create scenes like the ones above?
+      Well, it's no surprise that converting this art to animation takes lots and lots of programming skill that is developed over time through countless trials and iterations.
+      Let's see if we can break down this scene into smaller components and try our hand at building some graphics.
+      </p>
 
-<br>
-<div id="left">
+      <p>
+      Let's focus specifically on the tree.If you look closely at the picture, the tree itself is made up of a pattern of similar strokes. In this hour of code, we will teach you how to break down these patterns to have you code a tree of you own. You will be equipped with the basic framework, earning a technique from animators' toolbox.
+      </p>
 
-    <div id="page1" class="lab_page">
-        <h2>Part 1</h2>
-
-        <img src="images/image12.png">
-
-        <p>
-        Have you wondered how animators create scenes like the ones above?
-        Well, it's no surprise that converting this art to animation takes lots and lots of programming skill that is developed over time through countless trials and iterations.
-        Let's see if we can break down this scene into smaller components and try our hand at building some graphics.
-        </p>
-
-        <p>
-        Let's focus specifically on the tree.If you look closely at the picture, the tree itself is made up of a pattern of similar strokes. In this hour of code, we will teach you how to break down these patterns to have you code a tree of you own. You will be equipped with the basic framework, earning a technique from animators' toolbox.
-        </p>
-
-        <p>
-        With lots of coding and playing around, you will get a tree that looks like this:
-        </p>
-
-        <img src="images/TreeOfLife.jpg">
+      <p>
+      With lots of coding and playing around, you will get a tree that looks like this:
+      </p>
 
 
     </div>
 
-</div>
-<div id="right">
-    <div id='iframes'>
-        <iframe id='snap' width=100% height=90% src="snap.html"></iframe>
-    </div>
+  </div>
 
-</div>
-<video id="video-loop" style="position:absolute; top: 0; left: 0; width: 0;" loop autoplay>
-</video>
+  <div id="right">
+    <iframe id='snap' width=100% height=90% src="snap.html"></iframe>
+  </div>
+
+  <video id="video-loop" loop autoplay></video>
+
 </body>
 </html>
