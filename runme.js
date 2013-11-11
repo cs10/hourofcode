@@ -43,13 +43,27 @@ function update_video (name) {
 }
 
 function btn_click () {
-  var index = $(this).data('index');
+  var index = +$(this).data('index');
   var name = btn_to_name[index];
   $('.btn-top').eq(current_lesson).button('toggle');
   load_project_xml(name + ".xml");
   update_video(name);
   $('.btn-top').eq(index).button('toggle');
   current_lesson = index;
+  console.log ( 'current_lesson + 1 = ', current_lesson + 1 );
+  console.log ( 'bin_to_name.length = ', btn_to_name.length );
+  if (current_lesson + 1 === btn_to_name.length) {
+      console.log (' Showing done button.');
+      $('#done-button').removeClass('hidden');
+      $('#next-button').addClass('hidden');
+  }
+  else {
+    $('#next-button').removeClass('hidden');
+  }
+}
+
+function next_lesson() {
+  $('.btn-top').eq(current_lesson + 1).click();
 }
 
 $(window).load(function () {
@@ -63,6 +77,7 @@ $(window).load(function () {
   $(".btn-top").first().button('toggle');
   $(".btn-top").first().click();
   place_video();
+  $("#next-button").on('click', next_lesson);
 });
 
 $(window).resize(function () {

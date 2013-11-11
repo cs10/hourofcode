@@ -68,3 +68,10 @@ img {
   padding-top: 35;
   color: white;
 }
+
+#next-button {
+  float: right;
+  padding-right: 30px;
+  padding-top: 35;
+  color: white;
+}
