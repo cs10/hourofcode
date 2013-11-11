@@ -15,12 +15,12 @@
 
     <div id="top">
         <a id='bjclogo' href='http://bjc.berkeley.edu' target='_blank'><img style='float:left; width:120px; padding-top: 25px; padding-left:30px' src="images/bjc200.png"></a>
-        <div style='float:left; padding-left: 30px; padding-top: 25px; font-size: 50px; color: white'>Hour of Code</div>
+        <div class="page-title">Hour of Code</div>
 
-    <div id='buttons' style='float:left; margin-top: 40px; margin-left: 100px; font-size: 30px' class='btn-group'>
-        <button id="first-button" onclick="load_project_xml('tutorial_01.xml');" style='padding-left:20px; padding-right:20px; font-size: 30px' class='btn btn-default'>#1</button>
-        <button onclick="load_project_xml('tutorial_02.xml');" style='padding-left:20px; padding-right:20px; font-size: 30px' class='btn btn-default'>#2</button>
-        <button onclick="load_project_xml('molemash.xml');" style='padding-left:20px; padding-right:20px; font-size: 30px' class='btn btn-default'>#3</button>
+    <div id='buttons' class="top-button-container btn-group">
+        <button onclick="btn_click(0);" style="font-size: 30px" class='btn-top btn btn-default'>#1</button>
+        <button onclick="btn_click(1);" style="font-size: 30px" class='btn-top btn btn-default'>#2</button>
+        <button onclick="btn_click(2);" style="font-size: 30px" class='btn-top btn btn-default'>#3</button>
     </div>
 
         <a href='http://code.org/congrats?i=' target='_blank'><div style='float:right; padding-right: 30px; padding-top: 20px; color: white'><button style='font-size: 30px;' class='btn btn-success'>I'm done!</button></div></a>
@@ -65,10 +65,6 @@
 
 </div>
 <video id="video-loop" style="position:absolute; top: 0; left: 0; width: 0;" loop autoplay>
-  <source src="tutorial01.ogv" type=video/ogv>
-  <source src="tutorial01.ogg" type=video/ogg>
-  <source src="tutorial01.webm" type=video/webm>
-  <source src="tutorial01.avi" type=video/avi>
 </video>
 </body>
 </html>

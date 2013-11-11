@@ -1,1 +1,10 @@
 .DS_Store
+### /home/kyle/.gitignore-boilerplates/Global/vim.gitignore
+
+.*.s[a-w][a-z]
+*.un~
+Session.vim
+.netrwhist
+*~
+
+
