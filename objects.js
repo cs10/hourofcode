@@ -1782,33 +1782,33 @@ SpriteMorph.prototype.blockTemplates = function (category) {
     //} else if (cat === 'variables') {
     blocks.push('=');
 
-        button = new PushButtonMorph(
-            null,
-            function () {
-                new VariableDialogMorph(
-                    null,
-                    function (pair) {
-                        if (pair && !myself.variables.silentFind(pair[0])) {
-                            myself.addVariable(pair[0], pair[1]);
-                            myself.toggleVariableWatcher(pair[0], pair[1]);
-                            myself.blocksCache[cat] = null;
-                            myself.paletteCache[cat] = null;
-                            myself.parentThatIsA(IDE_Morph).refreshPalette();
-                        }
-                    },
-                    myself
-                ).prompt(
-                    'Variable name',
-                    null,
-                    myself.world()
-                );
-            },
-            'Make a variable'
-        );
-        button.userMenu = helpMenu;
-        button.selector = 'addVariable';
-        button.showHelp = BlockMorph.prototype.showHelp;
-        blocks.push(button);
+        //button = new PushButtonMorph(
+            //null,
+            //function () {
+                //new VariableDialogMorph(
+                    //null,
+                    //function (pair) {
+                        //if (pair && !myself.variables.silentFind(pair[0])) {
+                            //myself.addVariable(pair[0], pair[1]);
+                            //myself.toggleVariableWatcher(pair[0], pair[1]);
+                            //myself.blocksCache[cat] = null;
+                            //myself.paletteCache[cat] = null;
+                            //myself.parentThatIsA(IDE_Morph).refreshPalette();
+                        //}
+                    //},
+                    //myself
+                //).prompt(
+                    //'Variable name',
+                    //null,
+                    //myself.world()
+                //);
+            //},
+            //'Make a variable'
+        //);
+        //button.userMenu = helpMenu;
+        //button.selector = 'addVariable';
+        //button.showHelp = BlockMorph.prototype.showHelp;
+        //blocks.push(button);
 
         if (this.variables.allNames().length > 0) {
             button = new PushButtonMorph(
@@ -1892,38 +1892,38 @@ SpriteMorph.prototype.blockTemplates = function (category) {
             blocks.push('=');
         }
 
-        button = new PushButtonMorph(
-            null,
-            function () {
-                var ide = myself.parentThatIsA(IDE_Morph),
-                    stage = myself.parentThatIsA(StageMorph);
-                new BlockDialogMorph(
-                    null,
-                    function (definition) {
-                        if (definition.spec !== '') {
-                            if (definition.isGlobal) {
-                                stage.globalBlocks.push(definition);
-                            } else {
-                                myself.customBlocks.push(definition);
-                            }
-                            ide.flushPaletteCache();
-                            ide.refreshPalette();
-                            new BlockEditorMorph(definition, myself).popUp();
-                        }
-                    },
-                    myself
-                ).prompt(
-                    'Make a block',
-                    null,
-                    myself.world()
-                );
-            },
-            'Make a block'
-        );
-        button.userMenu = helpMenu;
-        button.selector = 'addCustomBlock';
-        button.showHelp = BlockMorph.prototype.showHelp;
-        blocks.push(button);
+        //button = new PushButtonMorph(
+            //null,
+            //function () {
+                //var ide = myself.parentThatIsA(IDE_Morph),
+                    //stage = myself.parentThatIsA(StageMorph);
+                //new BlockDialogMorph(
+                    //null,
+                    //function (definition) {
+                        //if (definition.spec !== '') {
+                            //if (definition.isGlobal) {
+                                //stage.globalBlocks.push(definition);
+                            //} else {
+                                //myself.customBlocks.push(definition);
+                            //}
+                            //ide.flushPaletteCache();
+                            //ide.refreshPalette();
+                            //new BlockEditorMorph(definition, myself).popUp();
+                        //}
+                    //},
+                    //myself
+                //).prompt(
+                    //'Make a block',
+                    //null,
+                    //myself.world()
+                //);
+            //},
+            //'Make a block'
+        //);
+        //button.userMenu = helpMenu;
+        //button.selector = 'addCustomBlock';
+        //button.showHelp = BlockMorph.prototype.showHelp;
+        //blocks.push(button);
     //}
     return blocks;
 };
@@ -4543,34 +4543,34 @@ StageMorph.prototype.blockTemplates = function (category) {
             blocks.push('=');
         }
 
-        button = new PushButtonMorph(
-            null,
-            function () {
-                var ide = myself.parentThatIsA(IDE_Morph);
-                new BlockDialogMorph(
-                    null,
-                    function (definition) {
-                        if (definition.spec !== '') {
-                            if (definition.isGlobal) {
-                                myself.globalBlocks.push(definition);
-                            } else {
-                                myself.customBlocks.push(definition);
-                            }
-                            ide.flushPaletteCache();
-                            ide.refreshPalette();
-                            new BlockEditorMorph(definition, myself).popUp();
-                        }
-                    },
-                    myself
-                ).prompt(
-                    'Make a block',
-                    null,
-                    myself.world()
-                );
-            },
-            'Make a block'
-        );
-        blocks.push(button);
+        //button = new PushButtonMorph(
+            //null,
+            //function () {
+                //var ide = myself.parentThatIsA(IDE_Morph);
+                //new BlockDialogMorph(
+                    //null,
+                    //function (definition) {
+                        //if (definition.spec !== '') {
+                            //if (definition.isGlobal) {
+                                //myself.globalBlocks.push(definition);
+                            //} else {
+                                //myself.customBlocks.push(definition);
+                            //}
+                            //ide.flushPaletteCache();
+                            //ide.refreshPalette();
+                            //new BlockEditorMorph(definition, myself).popUp();
+                        //}
+                    //},
+                    //myself
+                //).prompt(
+                    //'Make a block',
+                    //null,
+                    //myself.world()
+                //);
+            //},
+            //'Make a block'
+        //);
+        //blocks.push(button);
     }
     return blocks;
 };
