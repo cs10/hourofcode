@@ -42,6 +42,10 @@ function update_video (name) {
   $('#video-loop')[0].load();
 }
 
+function click_btn_num ( i ) {
+  $('.btn-top').eq(i).click();
+}
+
 function btn_click () {
   var index = +$(this).data('index');
   var name = btn_to_name[index];
@@ -53,17 +57,23 @@ function btn_click () {
   console.log ( 'current_lesson + 1 = ', current_lesson + 1 );
   console.log ( 'bin_to_name.length = ', btn_to_name.length );
   if (current_lesson + 1 === btn_to_name.length) {
-      console.log (' Showing done button.');
-      $('#done-button').removeClass('hidden');
-      $('#next-button').addClass('hidden');
+    console.log (' Showing done button.');
+    $('#done-button').removeClass('hidden');
+    $('#next-button').addClass('hidden');
   }
   else {
     $('#next-button').removeClass('hidden');
   }
+  var request = new XMLHttpRequest ();
+  request.onload = function () {
+    $('#left').html(this.responseText);
+  };
+  request.open("get", name + '.html', true);
+  request.send();
 }
 
 function next_lesson() {
-  $('.btn-top').eq(current_lesson + 1).click();
+  click_btn_num(current_lesson + 1);
 }
 
 $(document).ready(function () {
