@@ -3125,6 +3125,7 @@ IDE_Morph.prototype.toggleAppMode = function (appMode) {
 
     Morph.prototype.trackChanges = false;
     if (this.isAppMode) {
+        window.videoLoop.addClass('hidden');
         this.setColor(this.appModeColor);
         this.controlBar.setColor(this.color);
         this.controlBar.appModeButton.refresh();
@@ -3137,6 +3138,7 @@ IDE_Morph.prototype.toggleAppMode = function (appMode) {
             }
         });
     } else {
+        window.videoLoop.removeClass('hidden');
         this.setColor(this.backgroundColor);
         this.controlBar.setColor(this.frameColor);
         elements.forEach(function (e) {

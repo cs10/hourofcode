@@ -66,13 +66,18 @@ function next_lesson() {
   $('.btn-top').eq(current_lesson + 1).click();
 }
 
+$(document).ready(function () {
+  document.getElementById('snap').contentWindow.videoLoop = $('#video-loop');
+});
+
 $(window).load(function () {
   var top_buttons = $('#buttons-top')
   var i;
   for ( i in btn_to_name ) {
+    i = parseInt(i);
     top_buttons.append($('<button>',
       {class:'btn-top btn btn-lg btn-default'})
-      .text('#' + i).data('index', i).on('click', btn_click));
+      .text('#' + (i + 1)).data('index', i).on('click', btn_click));
     }
   $(".btn-top").first().button('toggle');
   $(".btn-top").first().click();
