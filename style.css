@@ -8,8 +8,9 @@ body {
 }
 
 #top {
-  background: linear-gradient(45deg, #131141 0%,#8d4363 100%);
-  height: 10%;
+  /*background: linear-gradient(45deg, #131141 0%,#8d4363 100%);*/
+  background-color: #131141;
+  height: 100px;
   overflow: auto;
   overflow-y: hidden;
 }
@@ -49,7 +50,7 @@ img {
 }
 
 .top-button-container {
-  float:left;
+  float: left;
   margin-top: 40px;
   margin-left: 100px;
   font-size: 30px;
@@ -57,7 +58,7 @@ img {
 
 #bjclogo-img {
   float: left;
-  width: 100px;
+  width: 90px;
   padding-top: 5px;
   padding-left: 30px;
 }

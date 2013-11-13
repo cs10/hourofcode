@@ -33,13 +33,32 @@ var btn_to_name = [
   "molemash",
   ];
 
+var btn_to_left = [
+  ];
+
+function preload_left () {
+  for (var i in btn_to_name) {
+    var url = btn_to_name[i] + '.html';
+    //console.log('i = ', i);
+    //console.log('btn_to_name[i] = ', btn_to_name[i]);
+    var request = new XMLHttpRequest ();
+    request.onload = function(idx) {
+      return function () {
+      	btn_to_left[idx] = this.responseText;
+    } }(i);
+    request.open("get", url, true);
+    request.send();
+  }
+}
+
+preload_left();
+
 function update_video (name) {
   $('#video-loop').find('source').remove();
-  $('#video-loop').append($('<source>', {src:name + '.ogv', type: 'video/ogv'}));
-  $('#video-loop').append($('<source>', {src:name + '.ogg', type: 'video/ogg'}));
-  $('#video-loop').append($('<source>', {src:name + '.webm', type: 'video/webm'}));
-  $('#video-loop').append($('<source>', {src:name + '.avi', type: 'video/avi'}));
-  $('#video-loop')[0].load();
+  //$('#video-loop').append($('<source>', {src:name + '.ogg', type: 'video/ogg'}));
+  //$('#video-loop').append($('<source>', {src:name + '.webm', type: 'video/webm'}));
+  //$('#video-loop').append($('<source>', {src:name + '.avi', type: 'video/avi'}));
+  //$('#video-loop')[0].load();
 }
 
 function click_btn_num ( i ) {
@@ -47,29 +66,35 @@ function click_btn_num ( i ) {
 }
 
 function btn_click () {
-  var index = +$(this).data('index');
+  var index = parseInt($(this).data('index'));
   var name = btn_to_name[index];
   $('.btn-top').eq(current_lesson).button('toggle');
   load_project_xml(name + ".xml");
   update_video(name);
   $('.btn-top').eq(index).button('toggle');
   current_lesson = index;
-  console.log ( 'current_lesson + 1 = ', current_lesson + 1 );
-  console.log ( 'bin_to_name.length = ', btn_to_name.length );
+  //console.log ( 'current_lesson + 1 = ', current_lesson + 1 );
+  //console.log ( 'bin_to_name.length = ', btn_to_name.length );
   if (current_lesson + 1 === btn_to_name.length) {
-    console.log (' Showing done button.');
+    //console.log (' Showing done button.');
     $('#done-button').removeClass('hidden');
     $('#next-button').addClass('hidden');
   }
   else {
     $('#next-button').removeClass('hidden');
   }
-  var request = new XMLHttpRequest ();
-  request.onload = function () {
-    $('#left').html(this.responseText);
-  };
-  request.open("get", name + '.html', true);
-  request.send();
+  function load_left (idx) {
+    var leftText = btn_to_left[index];
+    //console.log('Got left text: ', leftText);
+    //console.log(JSON.stringify(btn_to_left));
+    if (leftText !== undefined) {
+      $('#left').html(leftText);
+    }
+    else {
+      setTimeout(load_left, 100);
+    }
+  }
+  load_left();
 }
 
 function next_lesson() {
