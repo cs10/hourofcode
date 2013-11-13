@@ -1373,22 +1373,6 @@ IDE_Morph.prototype.fixLayout = function (situation) {
 
     Morph.prototype.trackChanges = false;
 
-    if (situation !== 'refreshPalette') {
-        // controlBar
-        var pos = this.stage.topRight();
-        pos.y -= this.controlBar.height() + padding;
-        pos.x -= this.controlBar.width();
-        this.controlBar.setPosition(pos);
-        this.controlBar.setWidth(this.stage.right() - this.stage.left());
-        //this.controlBar.setWidth(this.right() - this.controlBar.left());
-        //this.controlBar.setWidth(100);
-        this.controlBar.fixLayout();
-
-        // categories
-        this.categories.setLeft(this.logo.left());
-        this.categories.setTop(this.logo.bottom());
-    }
-
     // palette
     this.palette.setLeft(this.left());
     this.palette.setTop(this.top() + padding);
@@ -1451,6 +1435,22 @@ IDE_Morph.prototype.fixLayout = function (situation) {
         //this.tabEditor.setTop(this.height());
         //this.tabBar.setTop(this.top());
         //this.spriteBar.setTop(this.top());
+    }
+
+    if (situation !== 'refreshPalette') {
+        // controlBar
+        var pos = this.stage.topRight();
+        pos.y -= this.controlBar.height() + padding;
+        pos.x -= this.controlBar.width();
+        this.controlBar.setPosition(pos);
+        this.controlBar.setWidth(this.stage.right() - this.stage.left());
+        //this.controlBar.setWidth(this.right() - this.controlBar.left());
+        //this.controlBar.setWidth(100);
+        this.controlBar.fixLayout();
+
+        // categories
+        this.categories.setLeft(this.logo.left());
+        this.categories.setTop(this.logo.bottom());
     }
 
     Morph.prototype.trackChanges = true;
@@ -3159,6 +3159,7 @@ IDE_Morph.prototype.toggleAppMode = function (appMode) {
         });
     }
     this.setExtent(this.world().extent()); // resume trackChanges
+    this.fixLayout();
 };
 
 IDE_Morph.prototype.toggleStageSize = function (isSmall) {
