@@ -32,6 +32,7 @@ function place_corral_cover () {
 }
 
 var btn_to_name = [
+  "bjchoc_00",
   "bjchoc_01",
   "bjchoc_02",
   "bjchoc_03",
@@ -41,7 +42,6 @@ var btn_to_name = [
   "bjchoc_07",
   "bjchoc_08",
   "bjchoc_09",
-  "bjchoc_10",
   ];
 
 var idx_to_title = [
@@ -138,7 +138,7 @@ function btn_click () {
   else {
     $('#next-button').removeClass('hidden');
   }
-  location.hash = "#" + current_lesson;
+  location.hash = "#" + (current_lesson + 1);
   place_in_corral_cover([
       corralBtn('Show me the answer.', show_answer),
       corralBtn('Replace my code.', fix_code)
@@ -177,7 +177,7 @@ $(window).load(function () {
   var num = window.location.hash.substring(1);
 
   if (num === '') {
-    num = 1;
+    num = 0;
     location.hash = "#" + num;
   }
   else {
