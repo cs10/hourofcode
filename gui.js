@@ -1420,8 +1420,6 @@ IDE_Morph.prototype.fixLayout = function (situation) {
         this.corralBar.setLeft(this.stage.left());
         this.corralBar.setTop(this.stage.bottom() + padding);
         this.corralBar.setWidth(this.stage.width());
-        window.videoPos = this.corralBar.position();
-        window.videoPos.width = this.corralBar.width();
 
         // corral
         if (!contains(['selectSprite', 'tabEditor'], situation)) {
@@ -1430,6 +1428,9 @@ IDE_Morph.prototype.fixLayout = function (situation) {
             this.corral.setHeight(this.bottom() - this.corral.top());
             this.corral.fixLayout();
         }
+        window.corralPos = this.corralBar.position();
+        window.corralPos.width = this.corralBar.width();
+        window.corralPos.height = this.corralBar.height() + this.corral.height();
 
         //this.tabEditor.setHeight(this.height());
         //this.tabEditor.setTop(this.height());
@@ -3125,7 +3126,7 @@ IDE_Morph.prototype.toggleAppMode = function (appMode) {
 
     Morph.prototype.trackChanges = false;
     if (this.isAppMode) {
-        window.videoLoop.addClass('hidden');
+        window.corralCover.addClass('hidden');
         this.setColor(this.appModeColor);
         this.controlBar.setColor(this.color);
         this.controlBar.appModeButton.refresh();
@@ -3138,7 +3139,7 @@ IDE_Morph.prototype.toggleAppMode = function (appMode) {
             }
         });
     } else {
-        window.videoLoop.removeClass('hidden');
+        window.corralCover.removeClass('hidden');
         this.setColor(this.backgroundColor);
         this.controlBar.setColor(this.frameColor);
         elements.forEach(function (e) {

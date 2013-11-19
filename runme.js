@@ -14,16 +14,21 @@ function load_project_xml(uri) {
   document.getElementById('snap').contentWindow.load_project_xml(uri);
 }
 
-function place_video () {
-  var pos = document.getElementById('snap').contentWindow.videoPos;
+function place_corral_cover () {
+  var pos = document.getElementById('snap').contentWindow.corralPos;
   var snap = $('#snap').offset();
   var padding = 5;
   if (pos !== undefined) {
-    $("#video-loop").offset({
+    $("#corral-cover").offset({
       top: pos.y + snap.top + padding,
       left: pos.x + snap.left + padding
       });
-    $("#video-loop").first().width(pos.width - padding);
+    //$("#corral-cover").first().width(pos.width - padding);
+    $("#corral-cover").width(pos.width - padding);
+    $("#corral-cover").height(pos.height - 2 * padding);
+    $('#corral-cover').children().each(function (i,j) {
+      var v = $(this).offsetWidth;
+    });
   }
 }
 
@@ -53,30 +58,45 @@ function preload_left () {
 
 preload_left();
 
-function update_video (name) {
-  $('#video-loop').find('source').remove();
-  //$('#video-loop').append($('<source>', {src:name + '.ogg', type: 'video/ogg'}));
-  //$('#video-loop').append($('<source>', {src:name + '.webm', type: 'video/webm'}));
-  //$('#video-loop').append($('<source>', {src:name + '.avi', type: 'video/avi'}));
-  //$('#video-loop')[0].load();
-}
-
 function click_btn_num ( i ) {
   $('.btn-top').eq(i).click();
+}
+
+function place_in_corral_cover(elems) {
+  var corralCover = $('#corral-cover');
+  corralCover.empty();
+  corralCover.append($('<div>', {class: 'div-corral-cover'})
+      .append($('<div>', {class: 'div-corral-cover-inner'})
+      .append(elems)));
+}
+
+function do_it_for_me() {
+  load_project_xml(btn_to_name[current_lesson + 1] + ".xml");
+}
+
+function fix_code() {
+  load_project_xml(btn_to_name[current_lesson] + ".xml");
+}
+
+function corralBtn(text, callback) {
+  return $('<button>', {class: 'btn btn-primary btn-lg btn-corral-cover'}).text(text).click(callback)
+}
+
+function show_answer() {
+    place_in_corral_cover ([$('<img>',
+          {src: btn_to_name[current_lesson] + '_answer.gif'}),
+        corralBtn('Do it for me.', do_it_for_me)
+        ]);
 }
 
 function btn_click () {
   var index = parseInt($(this).data('index'));
   var name = btn_to_name[index];
   $('.btn-top').eq(current_lesson).button('toggle');
-  load_project_xml(name + ".xml");
-  update_video(name);
+  //load_project_xml(name + ".xml");
   $('.btn-top').eq(index).button('toggle');
   current_lesson = index;
-  //console.log ( 'current_lesson + 1 = ', current_lesson + 1 );
-  //console.log ( 'bin_to_name.length = ', btn_to_name.length );
   if (current_lesson + 1 === btn_to_name.length) {
-    //console.log (' Showing done button.');
     $('#done-button').removeClass('hidden');
     $('#next-button').addClass('hidden');
   }
@@ -85,8 +105,6 @@ function btn_click () {
   }
   function load_left (idx) {
     var leftText = btn_to_left[index];
-    //console.log('Got left text: ', leftText);
-    //console.log(JSON.stringify(btn_to_left));
     if (leftText !== undefined) {
       $('#left').html(leftText);
     }
@@ -94,6 +112,11 @@ function btn_click () {
       setTimeout(load_left, 100);
     }
   }
+  place_in_corral_cover([
+      corralBtn('Show me the answer.', show_answer),
+      corralBtn('Replace my code.', fix_code)
+      ]
+      );
   load_left();
 }
 
@@ -102,7 +125,7 @@ function next_lesson() {
 }
 
 $(document).ready(function () {
-  document.getElementById('snap').contentWindow.videoLoop = $('#video-loop');
+  document.getElementById('snap').contentWindow.corralCover = $('#corral-cover');
 });
 
 $(window).load(function () {
@@ -116,10 +139,11 @@ $(window).load(function () {
     }
   $(".btn-top").first().button('toggle');
   $(".btn-top").first().click();
-  place_video();
+  load_project_xml ( btn_to_name[0] + '.xml' );
+  place_corral_cover();
   $("#next-button").on('click', next_lesson);
 });
 
 $(window).resize(function () {
-  waitForFinalEvent(place_video, 10, "place_video_late");
+  waitForFinalEvent(place_corral_cover, 10, "place_corral_cover");
 });

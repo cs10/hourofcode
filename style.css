@@ -76,3 +76,25 @@ img {
   padding-top: 35;
   color: white;
 }
+
+#corral-cover {
+  background-color: white;
+  display: table;
+  position: absolute;
+}
+
+.div-corral-cover {
+  display: table-cell;
+  vertical-align: middle;
+}
+.div-corral-cover-inner {
+  margin-left: 25%;
+  margin-right: 25%;
+  width: 50%;
+  text-align: center;
+}
+
+.btn-corral-cover {
+  margin: 2em 0;
+  width: 100%;
+}
