@@ -1,0 +1,85 @@
+<html>
+
+<head>
+    <title>Snap: Hour of Code</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+    <link href='bootstrap/css/bootstrap.min.css' rel="stylesheet" type='text/css'>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+
+    <script src='runme.js'></script>
+</head>
+<body>
+
+    <div id="top">
+        <a id='bjclogo' href='http://bjc.berkeley.edu' target='_blank'><img style='float:left; width:120px; padding-top: 25px; padding-left:30px' src="images/bjc200.png"></a>
+        <div style='float:left; padding-left: 30px; padding-top: 25px; font-size: 50px; color: white'>Hour of Code</div>
+
+    <div id='buttons' style='float:left; margin-top: 40px; margin-left: 100px; font-size: 30px' data-toggle="buttons" class='btn-group'>
+        <button onclick="load(1, 'marwahaha', 'tutorial1');" style='padding-left:20px; padding-right:20px; font-size: 30px' class='btn btn-default'><input type='radio'>#1</button>
+        <button onclick="load(2, 'marwahaha', 'tutorial2');" style='padding-left:20px; padding-right:20px; font-size: 30px' class='btn btn-default'><input type='radio'>#2</button>
+        <button onclick="load(3, 'Dan Garcia', 'Mole Mash');" style='padding-left:20px; padding-right:20px; font-size: 30px' class='btn btn-default'><input type='radio'>#3</button>
+    </div>
+
+
+
+        <a href='http://code.org/congrats?i=' target='_blank'><div style='float:right; padding-right: 30px; padding-top: 20px; color: white'><button style='font-size: 30px;' class='btn btn-success'>I'm done!</button></div></a>
+
+
+</div>
+
+
+
+<br>
+<div id="left">
+
+    <div id="page1" class="lab_page">
+<button class="btn btn-primary btn-lg" onclick='$("#myModal").modal("toggle");'>
+  Launch Sample Modal
+</button>
+
+        <h2>Part 1</h2>
+Sample text
+
+    </div>
+
+</div>
+
+<div id="right">
+    <div id='iframes'>
+        <iframe id='snap' width=100% height=80% src="file://localhost/Users/Kunal/Desktop/cs10/snap/snap.html"></iframe>
+    </div>
+</div>
+
+
+
+
+<!-- Modal
+ toggle me with $('#myModal').modal('toggle') 
+ -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" >
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" onclick='killvideo()' aria-hidden="true">&times;</button>
+        <h4 class="modal-title">
+            Welcome to Hour of Code!
+            Sample Title Here
+        </h4>
+      </div>
+      <div class="modal-body">
+        Sample Body Here
+        <iframe id='video' width="500" height="400" src="http://www.youtube.com/embed/M2u32mJpy-s?html5=1&enablejsapi=1" frameborder="0" allowfullscreen ></iframe>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
+
+
+
+
+
+</body>
+</html>

@@ -32,12 +32,27 @@ function place_corral_cover () {
 }
 
 var btn_to_name = [
-  "tutorial_01",
-  "tutorial_02",
-  "molemash",
+  "bjchoc_00",
+  "bjchoc_01",
+  "bjchoc_02",
+  "bjchoc_03",
+  "bjchoc_04",
+  "bjchoc_05",
+  "bjchoc_06",
+  "bjchoc_07",
+  "bjchoc_09",
+  "bjchoc_10",
   ];
 
 var idx_to_title = [
+  "Welcome to Snap!",
+  "Welcome to Snap!",
+  "Welcome to Snap!",
+  "Welcome to Snap!",
+  "Welcome to Snap!",
+  "Welcome to Snap!",
+  "Welcome to Snap!",
+  "Welcome to Snap!",
   "Welcome to Snap!",
   "Welcome to Snap!",
   "Welcome to Snap!",
