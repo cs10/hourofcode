@@ -91,7 +91,11 @@ function place_in_corral_cover(elems) {
 }
 
 function do_it_for_me() {
-  load_project_xml(btn_to_name[current_lesson + 1] + ".xml");
+  if (current_lesson < 9) {
+    load_project_xml(btn_to_name[current_lesson + 1] + ".xml");
+  } else {
+    load_project_xml("bjchoc_10.xml");
+  }
 }
 
 function fix_code() {
@@ -147,7 +151,7 @@ function btn_click () {
   load_left(index, function (leftText) {
     $('#left').html(leftText);
     });
-  prepare_modal(0, function () {
+  prepare_modal(current_lesson, function () {
     $('#myModal').modal('toggle');
     });
 }
