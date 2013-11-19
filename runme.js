@@ -23,7 +23,6 @@ function place_corral_cover () {
       top: pos.y + snap.top + padding,
       left: pos.x + snap.left + padding
       });
-    //$("#corral-cover").first().width(pos.width - padding);
     $("#corral-cover").width(pos.width - padding);
     $("#corral-cover").height(pos.height - 2 * padding);
     $('#corral-cover').children().each(function (i,j) {
@@ -36,6 +35,12 @@ var btn_to_name = [
   "tutorial_01",
   "tutorial_02",
   "molemash",
+  ];
+
+var idx_to_title = [
+  "Welcome to Snap!",
+  "Welcome to Snap!",
+  "Welcome to Snap!",
   ];
 
 var btn_to_left = [
@@ -89,6 +94,21 @@ function show_answer() {
         ]);
 }
 
+function killvideo() {
+	src = $('#video').attr('src');
+	$('#video').attr('src', '');
+	$('#video').attr('src', src);
+}
+function load_left (idx, callback) {
+  var leftText = btn_to_left[idx];
+  if (leftText !== undefined) {
+    callback(leftText);
+  }
+  else {
+    setTimeout(function () {load_left(idx, callback)}, 100);
+  }
+}
+
 function btn_click () {
   var index = parseInt($(this).data('index'));
   var name = btn_to_name[index];
@@ -103,43 +123,60 @@ function btn_click () {
   else {
     $('#next-button').removeClass('hidden');
   }
-  function load_left (idx) {
-    var leftText = btn_to_left[index];
-    if (leftText !== undefined) {
-      $('#left').html(leftText);
-    }
-    else {
-      setTimeout(load_left, 100);
-    }
-  }
+  location.hash = "#" + current_lesson;
   place_in_corral_cover([
       corralBtn('Show me the answer.', show_answer),
       corralBtn('Replace my code.', fix_code)
       ]
       );
-  load_left();
+  load_left(index, function (leftText) {
+    $('#left').html(leftText);
+    });
+  prepare_modal(0, function () {
+    $('#myModal').modal('toggle');
+    });
 }
 
 function next_lesson() {
   click_btn_num(current_lesson + 1);
 }
 
+function prepare_modal(idx, callback) {
+  load_left(idx, function (leftText) {
+    $('.modal-title').html(idx_to_title[idx]);
+    $('.modal-body').html(leftText);
+    callback();
+    });
+}
+
 $(document).ready(function () {
   document.getElementById('snap').contentWindow.corralCover = $('#corral-cover');
+  $(".modal").click( function() { killvideo()});
 });
 
 $(window).load(function () {
   var top_buttons = $('#buttons-top')
   var i;
+
+  var num = window.location.hash.substring(1);
+
+  if (num === '') {
+    num = 0;
+    location.hash = "#" + num;
+  }
+  else {
+    current_lesson = parseInt(num);
+  }
+
   for ( i in btn_to_name ) {
     i = parseInt(i);
     top_buttons.append($('<button>',
       {class:'btn-top btn btn-lg btn-default'})
       .text('#' + (i + 1)).data('index', i).on('click', btn_click));
     }
-  $(".btn-top").first().button('toggle');
-  $(".btn-top").first().click();
-  load_project_xml ( btn_to_name[0] + '.xml' );
+  $(".btn-top").eq(current_lesson).button('toggle');
+  $(".btn-top").eq(current_lesson).click();
+  load_project_xml ( btn_to_name[current_lesson] + '.xml' );
   place_corral_cover();
   $("#next-button").on('click', next_lesson);
 });
