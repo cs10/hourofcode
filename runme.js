@@ -166,7 +166,8 @@ function prepare_modal(idx, callback) {
 
 $(document).ready(function () {
   document.getElementById('snap').contentWindow.corralCover = $('#corral-cover');
-  $(".modal").click( function() { killvideo()});
+  document.getElementById('snap').contentWindow.dont_export_hidden = true;
+  $(".modal").click( function() { killvideo(); } );
 });
 
 $(window).load(function () {

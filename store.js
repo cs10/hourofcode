@@ -475,6 +475,10 @@ SnapSerializer.prototype.loadProjectModel = function (xmlNode) {
             'hidden'
         ) && (model.attributes.hidden !== 'false');
 
+        if (window.dont_export_hidden === true) {
+          hidden = false;
+        }
+
         if (Object.prototype.hasOwnProperty.call(
                 model.attributes,
                 'var'
