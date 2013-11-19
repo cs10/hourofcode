@@ -2690,6 +2690,10 @@ IDE_Morph.prototype.saveProjectToDisk = function () {
     }
 };
 
+IDE_Morph.prototype.exportProjectToStr = function () {
+    return this.serializer.serialize(this.stage);
+};
+
 IDE_Morph.prototype.exportProject = function (name, plain) {
     var menu, str;
     if (name) {

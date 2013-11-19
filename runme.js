@@ -10,8 +10,37 @@ var waitForFinalEvent = (function () {
 
 var current_lesson = 0;
 
-function load_project_xml(uri) {
-  document.getElementById('snap').contentWindow.load_project_xml(uri);
+function load_project_uri(uri) {
+  document.getElementById('snap').contentWindow.load_project_uri(uri);
+}
+
+function load_project_xml(text) {
+  return document.getElementById('snap').contentWindow.load_project_xml(text);
+}
+
+function export_project_xml() {
+  return document.getElementById('snap').contentWindow.export_project_xml();
+}
+
+function xmlToString(xmlData) { 
+
+    var xmlString;
+    //IE
+    if (window.ActiveXObject){
+        xmlString = xmlData.xml;
+    }
+    // code for Mozilla, Firefox, Opera, etc.
+    else{
+        xmlString = (new XMLSerializer()).serializeToString(xmlData);
+    }
+    return xmlString;
+}
+
+function load_hidden_blocks(answer) {
+  var myXML = $.parseXML(export_project_xml());
+  var otherXML = $.parseXML(answer);
+  $(myXML).find('hidden').text($(otherXML).find('hidden').text());
+  load_project_xml(xmlToString(myXML));
 }
 
 function place_corral_cover () {
@@ -118,6 +147,7 @@ function killvideo() {
 	$('#video').attr('src', '');
 	$('#video').attr('src', src);
 }
+
 function load_left (idx, callback) {
   var leftText = btn_to_left[idx];
   if (leftText !== undefined) {
@@ -128,11 +158,23 @@ function load_left (idx, callback) {
   }
 }
 
+function get_proj_xml ( uri, callback ) {
+  var request = new XMLHttpRequest ();
+  request.onload = function () {
+    callback(this.responseText);
+  };
+  request.open("get", uri, true);
+  request.send();
+}
+
 function btn_click () {
   var index = parseInt($(this).data('index'));
   var name = btn_to_name[index];
   $('.btn-top').eq(current_lesson).button('toggle');
-  //load_project_xml(name + ".xml");
+  //load_project_uri(name + ".xml");
+  if (index !== 0) {
+    get_proj_xml ( name + ".xml", load_hidden_blocks);
+  }
   $('.btn-top').eq(index).button('toggle');
   current_lesson = index;
   if (current_lesson + 1 === btn_to_name.length) {
@@ -174,6 +216,8 @@ $(document).ready(function () {
   $(".modal").click( function() { killvideo(); } );
 });
 
+var first_lesson_loaded = false;
+
 $(window).load(function () {
   var top_buttons = $('#buttons-top')
   var i;
@@ -196,7 +240,7 @@ $(window).load(function () {
     }
   $(".btn-top").eq(current_lesson).button('toggle');
   $(".btn-top").eq(current_lesson).click();
-  load_project_xml ( btn_to_name[current_lesson] + '.xml' );
+  load_project_uri ( btn_to_name[current_lesson] + '.xml' );
   place_corral_cover();
   $("#next-button").on('click', next_lesson);
 });
