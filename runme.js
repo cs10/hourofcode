@@ -177,11 +177,11 @@ $(window).load(function () {
   var num = window.location.hash.substring(1);
 
   if (num === '') {
-    num = 0;
+    num = 1;
     location.hash = "#" + num;
   }
   else {
-    current_lesson = parseInt(num);
+    current_lesson = parseInt(num - 1);
   }
 
   for ( i in btn_to_name ) {
