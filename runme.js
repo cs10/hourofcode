@@ -32,7 +32,6 @@ function place_corral_cover () {
 }
 
 var btn_to_name = [
-  "bjchoc_00",
   "bjchoc_01",
   "bjchoc_02",
   "bjchoc_03",
@@ -40,6 +39,7 @@ var btn_to_name = [
   "bjchoc_05",
   "bjchoc_06",
   "bjchoc_07",
+  "bjchoc_08",
   "bjchoc_09",
   "bjchoc_10",
   ];
@@ -177,7 +177,7 @@ $(window).load(function () {
   var num = window.location.hash.substring(1);
 
   if (num === '') {
-    num = 0;
+    num = 1;
     location.hash = "#" + num;
   }
   else {
