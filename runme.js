@@ -156,9 +156,7 @@ function place_in_corral_cover(elems) {
   corralCover.empty();
   var inner = $('<div>', {class: 'div-corral-cover-inner'});
   corralCover.append($('<div>', {class: 'div-corral-cover'}).append(inner));
-  if (current_lesson !== btn_to_name.length - 1) {
-    inner.append(elems);
-  }
+  inner.append(elems);
 }
 
 function do_it_for_me() {
@@ -227,17 +225,22 @@ function btn_click () {
     $('#next-button').removeClass('hidden');
   }
   location.hash = "#" + (current_lesson + 1);
-  place_in_corral_cover([
+  if (current_lesson !== btn_to_name.length - 1) {
+    place_in_corral_cover([
       corralBtn('Show me the answer.', show_answer),
       corralBtn('Replace my code.', fix_code)
-      ]
-      );
+      ]);
+  } else {
+    place_in_corral_cover([
+      corralBtn('Replace my code.', fix_code)
+      ]);    
+  }
   load_left(index, function (leftText) {
     $('#left').html(leftText);
-    });
+  });
   prepare_modal(current_lesson, function () {
     $('#myModal').modal('toggle');
-    });
+  });
 }
 
 function next_lesson() {
