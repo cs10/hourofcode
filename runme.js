@@ -59,6 +59,17 @@ function share(callback) {
     generate_url(host_xml(export_project_xml()), callback);
 }
 
+function congrats() {
+    $('.modal-title').html("Congrats!");
+    $('.modal-body').html("Use this link to share your code: ");
+    $('#myModal').modal('show');
+    share(function(data) {
+      $('.modal-body').html("Use this link to share your code: <a href=" + data + ">" + data + "</a>");
+    });
+
+}
+
+
 function place_corral_cover () {
   var pos = document.getElementById('snap').contentWindow.corralPos;
   var snap = $('#snap').offset();
