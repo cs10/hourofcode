@@ -59,14 +59,29 @@ function share(callback) {
     generate_url(host_xml(export_project_xml()), callback);
 }
 
+
+var congrats_html = null;
+
+function preload_congrats () {
+  var url = 'congrats.html';
+  var request = new XMLHttpRequest ();
+  request.onload = function() {
+    console.log('Got congrats html');
+    congrats_html = this.responseText;
+  };
+  request.open("get", url, true);
+  request.send();
+}
+
+preload_congrats();
+
 function congrats() {
     $('.modal-title').html("Congrats!");
-    $('.modal-body').html("Use this link to share your code: ");
+    $('.modal-body').html(congrats_html);
     $('#myModal').modal('show');
     share(function(data) {
-      $('.modal-body').html("Use this link to share your code: <a href=" + data + ">" + data + "</a>");
+      $('.modal-body').html(congrats_html + "<br>Use this link to share your code: <a href=" + data + " target='_blank'>" + data + "</a>");
     });
-
 }
 
 
@@ -101,17 +116,17 @@ var btn_to_name = [
   ];
 
 var idx_to_title = [
-  "Welcome to Snap!",
-  "Welcome to Snap!",
-  "Welcome to Snap!",
-  "Welcome to Snap!",
-  "Welcome to Snap!",
-  "Welcome to Snap!",
-  "Welcome to Snap!",
-  "Welcome to Snap!",
-  "Welcome to Snap!",
-  "Welcome to Snap!",
-  "Welcome to Snap!",
+  "",
+  "",
+  "",
+  "",
+  "",
+  "",
+  "",
+  "",
+  "",
+  "",
+  "",
   ];
 
 var btn_to_left = [
@@ -153,7 +168,7 @@ function do_it_for_me() {
 }
 
 function fix_code() {
-  load_project_xml(btn_to_name[current_lesson] + ".xml");
+  load_project_uri(btn_to_name[current_lesson] + ".xml");
 }
 
 function corralBtn(text, callback) {
@@ -162,9 +177,7 @@ function corralBtn(text, callback) {
 
 function show_answer() {
     place_in_corral_cover ([$('<img>',
-          {src: btn_to_name[current_lesson] + '_answer.gif',
-           width: '80%',
-           height: '80%'}),
+          {src: btn_to_name[current_lesson] + '_answer.gif'}),
         corralBtn('Do it for me.', do_it_for_me)
         ]);
 }
