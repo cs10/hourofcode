@@ -43,6 +43,22 @@ function load_hidden_blocks(answer) {
   load_project_xml(xmlToString(myXML));
 }
 
+function host_xml(xml) {
+  var hash = hex_sha512(xml);
+  $.post("http://snap.berkeley.edu/hoc/store/store.php", {xml: xml, hash: hash});
+  return hash;
+}
+
+function generate_url(hash, callback) {
+  var url = "http://www.corsproxy.com/tinyurl.com/api-create.php?url=" + 
+    encodeURIComponent("http://snap.berkeley.edu/snapsource/snap.html#run:http://snap.berkeley.edu/hoc/store/" + hash + ".xml");
+  $.get(url, callback);
+}
+
+function share(callback) {
+    generate_url(host_xml(export_project_xml()), callback);
+}
+
 function place_corral_cover () {
   var pos = document.getElementById('snap').contentWindow.corralPos;
   var snap = $('#snap').offset();
@@ -229,7 +245,7 @@ $(window).load(function () {
     location.hash = "#" + num;
   }
   else {
-    current_lesson = parseInt(num - 1);
+    current_lesson = parseInt(num) - 1;
   }
 
   for ( i in btn_to_name ) {
