@@ -154,9 +154,11 @@ function click_btn_num ( i ) {
 function place_in_corral_cover(elems) {
   var corralCover = $('#corral-cover');
   corralCover.empty();
-  corralCover.append($('<div>', {class: 'div-corral-cover'})
-      .append($('<div>', {class: 'div-corral-cover-inner'})
-      .append(elems)));
+  var inner = $('<div>', {class: 'div-corral-cover-inner'});
+  corralCover.append($('<div>', {class: 'div-corral-cover'}).append(inner));
+  if (current_lesson !== btn_to_name.length - 1) {
+    inner.append(elems);
+  }
 }
 
 function do_it_for_me() {
