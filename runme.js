@@ -268,6 +268,12 @@ $(document).ready(function () {
 var first_lesson_loaded = false;
 
 $(window).load(function () {
+  var is_chrome = navigator.userAgent.toLowerCase().indexOf('chrome') > -1;
+  if (!(is_chrome)) {
+    $("body").empty();
+    $("body").append("<div id='chrome-message'>Try me on <a href='http://www.google.com/chrome' target='_blank'>Google Chrome</a>!</div>");
+    $("#chrome-message").show();
+  }
   var top_buttons = $('#buttons-top')
   var i;
 
