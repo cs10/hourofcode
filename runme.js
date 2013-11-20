@@ -120,8 +120,6 @@ var btn_to_left = [
 function preload_left () {
   for (var i in btn_to_name) {
     var url = btn_to_name[i] + '.html';
-    //console.log('i = ', i);
-    //console.log('btn_to_name[i] = ', btn_to_name[i]);
     var request = new XMLHttpRequest ();
     request.onload = function(idx) {
       return function () {
@@ -147,10 +145,10 @@ function place_in_corral_cover(elems) {
 }
 
 function do_it_for_me() {
-  if (current_lesson < 9) {
-    load_project_xml(btn_to_name[current_lesson + 1] + ".xml");
+  if (current_lesson !== btn_to_name.length - 1) {
+    load_project_uri(btn_to_name[current_lesson + 1] + ".xml");
   } else {
-    load_project_xml("bjchoc_10.xml");
+    load_project_uri("bjchoc_10.xml");
   }
 }
 
@@ -164,7 +162,9 @@ function corralBtn(text, callback) {
 
 function show_answer() {
     place_in_corral_cover ([$('<img>',
-          {src: btn_to_name[current_lesson] + '_answer.gif'}),
+          {src: btn_to_name[current_lesson] + '_answer.gif',
+           width: '80%',
+           height: '80%'}),
         corralBtn('Do it for me.', do_it_for_me)
         ]);
 }
@@ -233,6 +233,11 @@ function prepare_modal(idx, callback) {
   load_left(idx, function (leftText) {
     $('.modal-title').html(idx_to_title[idx]);
     $('.modal-body').html(leftText);
+    $('.modal-body').append($('<button>',
+        {class:'btn btn-lg btn-primary', style: 'margin-left:80%;', text:'Okay'}
+      ).click(function () {
+      $('#myModal').modal('toggle');
+    }));
     callback();
     });
 }
