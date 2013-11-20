@@ -176,7 +176,7 @@ function corralBtn(text, callback) {
 
 function show_answer() {
     place_in_corral_cover ([$('<img>',
-          {src: btn_to_name[current_lesson] + '_answer.gif'}),
+          {width: "200px", src: btn_to_name[current_lesson] + '_answer.gif'}),
         corralBtn('Do it for me.', do_it_for_me)
         ]);
 }
@@ -211,9 +211,9 @@ function btn_click () {
   var name = btn_to_name[index];
   $('.btn-top').eq(current_lesson).button('toggle');
   //load_project_uri(name + ".xml");
-  if (index !== 0) {
-    get_proj_xml ( name + ".xml", load_hidden_blocks);
-  }
+  // if (index !== 0) {
+  //   get_proj_xml ( name + ".xml", load_hidden_blocks);
+  // }
   $('.btn-top').eq(index).button('toggle');
   current_lesson = index;
   if (current_lesson + 1 === btn_to_name.length) {

@@ -30,15 +30,19 @@ body {
   padding: 10px;
 }
 
+#modal-alonzo {
+  display: block;
+  position: absolute;
+  left:-30px;
+  top:-70px;
+ }
+
 #right {
   height: 90%;
   overflow: hidden;
   margin: 10px;
 }
 
-img {
-  width: 100%;
-}
 
 .lab-page {
     padding: 10px;
