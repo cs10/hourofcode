@@ -10,7 +10,7 @@ body {
 #top {
   /*background: linear-gradient(45deg, #131141 0%,#8d4363 100%);*/
   background-color: #131141;
-  height: 100px;
+  height: 130px;
   overflow: auto;
   overflow-y: hidden;
 }
@@ -50,6 +50,14 @@ img {
   color: white;
 }
 
+.page-subtitle {
+  float: left;
+  padding-left: 50px;
+  padding-top: 50px;
+  font-size: 20px;
+  color: white;
+}
+
 .top-button-container {
   float: left;
   margin-top: 40px;
@@ -60,8 +68,15 @@ img {
 #bjclogo-img {
   float: left;
   width: 90px;
-  padding-top: 5px;
+  padding-top: 20px;
   padding-left: 30px;
+}
+
+#snaplogo-img {
+  float: left;
+  width: 90px;
+  margin-top: 35px;
+  margin-left: 10px;
 }
 
 #done-button {
