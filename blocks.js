@@ -1916,12 +1916,12 @@ BlockMorph.prototype.userMenu = function () {
         'showHelp'
     );
     if (this.isTemplate) {
-        if (this.selector !== 'evaluateCustomBlock') {
-            menu.addItem(
-                "hide",
-                'hidePrimitive'
-            );
-        }
+        // if (this.selector !== 'evaluateCustomBlock') {
+        //     menu.addItem(
+        //         "hide",
+        //         'hidePrimitive'
+        //     );
+        // }
         if (StageMorph.prototype.enableCodeMapping) {
             menu.addLine();
             menu.addItem(

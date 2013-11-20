@@ -66,7 +66,6 @@ function preload_congrats () {
   var url = 'congrats.html';
   var request = new XMLHttpRequest ();
   request.onload = function() {
-    console.log('Got congrats html');
     congrats_html = this.responseText;
   };
   request.open("get", url, true);

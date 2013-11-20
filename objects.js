@@ -1997,44 +1997,43 @@ SpriteMorph.prototype.freshPalette = function (category) {
                 );
             });
         }
-
-        if (canHidePrimitives()) {
-            menu.addItem(
-                'hide primitives',
-                function () {
-                    var defs = SpriteMorph.prototype.blocks;
-                    Object.keys(defs).forEach(function (sel) {
-                        if (defs[sel].category === category) {
-                            StageMorph.prototype.hiddenPrimitives[sel] = true;
-                        }
-                    });
-                    (more[category] || []).forEach(function (sel) {
-                        StageMorph.prototype.hiddenPrimitives[sel] = true;
-                    });
-                    ide.flushBlocksCache(category);
-                    ide.refreshPalette();
-                }
-            );
-        }
-        if (hasHiddenPrimitives()) {
-            menu.addItem(
-                'show primitives',
-                function () {
-                    var hiddens = StageMorph.prototype.hiddenPrimitives,
-                        defs = SpriteMorph.prototype.blocks;
-                    Object.keys(hiddens).forEach(function (sel) {
-                        if (defs[sel].category === category) {
-                            delete StageMorph.prototype.hiddenPrimitives[sel];
-                        }
-                    });
-                    (more[category] || []).forEach(function (sel) {
-                        delete StageMorph.prototype.hiddenPrimitives[sel];
-                    });
-                    ide.flushBlocksCache(category);
-                    ide.refreshPalette();
-                }
-            );
-        }
+        // if (canHidePrimitives()) {
+        //     menu.addItem(
+        //         'hide primitives',
+        //         function () {
+        //             var defs = SpriteMorph.prototype.blocks;
+        //             Object.keys(defs).forEach(function (sel) {
+        //                 if (defs[sel].category === category) {
+        //                     StageMorph.prototype.hiddenPrimitives[sel] = true;
+        //                 }
+        //             });
+        //             (more[category] || []).forEach(function (sel) {
+        //                 StageMorph.prototype.hiddenPrimitives[sel] = true;
+        //             });
+        //             ide.flushBlocksCache(category);
+        //             ide.refreshPalette();
+        //         }
+        //     );
+        // }
+        // if (hasHiddenPrimitives()) {
+        //     menu.addItem(
+        //         'show primitives',
+        //         function () {
+        //             var hiddens = StageMorph.prototype.hiddenPrimitives,
+        //                 defs = SpriteMorph.prototype.blocks;
+        //             Object.keys(hiddens).forEach(function (sel) {
+        //                 if (defs[sel].category === category) {
+        //                     delete StageMorph.prototype.hiddenPrimitives[sel];
+        //                 }
+        //             });
+        //             (more[category] || []).forEach(function (sel) {
+        //                 delete StageMorph.prototype.hiddenPrimitives[sel];
+        //             });
+        //             ide.flushBlocksCache(category);
+        //             ide.refreshPalette();
+        //         }
+        //     );
+        // }
         return menu;
     };
 
