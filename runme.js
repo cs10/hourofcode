@@ -75,7 +75,6 @@ function preload_congrats () {
 preload_congrats();
 
 function congrats() {
-    $('.modal-title').html("Congrats!");
     $('.modal-body').html(congrats_html);
     $('#myModal').modal('show');
     share(function(data) {
