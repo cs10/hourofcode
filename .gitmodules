@@ -1,0 +1,3 @@
+[submodule "full-interface"]
+	path = full-interface
+	url = https://github.com/beautyjoy/hourofcode
