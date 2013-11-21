@@ -22,25 +22,6 @@
 			var world;
                         var ide;
 
-                        function load_project_uri(uri) {
-                                var request = new XMLHttpRequest ();
-                                request.onload = function () {
-                                        window.ide.droppedText(this.responseText);
-                                };
-                                request.open("get", uri, true);
-                                request.send();
-                        }
-
-                        function load_project_uri(uri) {
-                                var request = new XMLHttpRequest ();
-                                request.onload = function () {
-                                        window.ide.droppedText(this.responseText);
-                                };
-                                request.open("get", uri, true);
-                                request.send();
-                        }
-
-
                         function load_project_xml(xml) {
                                 window.ide.droppedText(xml);
                         }
@@ -49,7 +30,6 @@
                                 return window.ide.exportProjectToStr ();
                         }
 
-                        window.load_project_uri = load_project_uri;
                         window.load_project_xml = load_project_xml;
                         window.export_project_xml = export_project_xml;
 

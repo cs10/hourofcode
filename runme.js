@@ -11,7 +11,12 @@ var waitForFinalEvent = (function () {
 var current_lesson = 0;
 
 function load_project_uri(uri) {
-  document.getElementById('snap').contentWindow.load_project_uri(uri);
+  var request = new XMLHttpRequest ();
+  request.onload = function () {
+    load_project_xml ( this.responseText );
+  };
+  request.open("get", uri, true);
+  request.send();
 }
 
 function load_project_xml(text) {
@@ -209,10 +214,21 @@ function btn_click () {
   var index = parseInt($(this).data('index'));
   var name = btn_to_name[index];
   $('.btn-top').eq(current_lesson).button('toggle');
-  //load_project_uri(name + ".xml");
-  // if (index !== 0) {
-  //   get_proj_xml ( name + ".xml", load_hidden_blocks);
-  // }
+  if (index === btn_to_name.length - 1) {
+    var xml = export_project_xml();
+    $('#corral-cover').addClass('hidden');
+    $('#snap').attr('src', 'full-interface/snap.html');
+    setTimeout(function () {
+      load_project_xml(xml);
+      },
+      500);
+    }
+  else {
+    $('#corral-cover').removeClass('hidden');
+    if (index !== 0) {
+      get_proj_xml ( name + ".xml", load_hidden_blocks);
+    }
+  }
   $('.btn-top').eq(index).button('toggle');
   current_lesson = index;
   if (current_lesson + 1 === btn_to_name.length) {
