@@ -41,11 +41,13 @@ function xmlToString(xmlData) {
     return xmlString;
 }
 
-function load_hidden_blocks(answer) {
+function partial_load_xml(answer) {
   var myXML = $.parseXML(export_project_xml());
   var otherXML = $.parseXML(answer);
   $(myXML).find('hidden').text($(otherXML).find('hidden').text());
-  load_project_xml(xmlToString(myXML));
+  var str = xmlToString(myXML);
+  load_project_xml(str);
+  return str;
 }
 
 function host_xml(xml) {
@@ -215,24 +217,29 @@ function btn_click () {
   var name = btn_to_name[index];
   $('.btn-top').eq(current_lesson).button('toggle');
   if (index === btn_to_name.length - 1) {
-    var xml = export_project_xml();
-    $('#corral-cover').addClass('hidden');
-    $('#snap').attr('src', 'full-interface/snap.html');
-    if ( first_click ) {
-      $('#snap').load(function () {
-        load_project_uri(btn_to_name[index] + '.xml');
-      });
-    }
-    else {
-      $('#snap').load(function () {
-        load_project_xml(xml);
-      });
-    }
+    get_proj_xml ( name + ".xml", function (lastXML) {
+      console.log('loading last xml:', name + '.xml');
+      var xml = partial_load_xml(lastXML);
+      console.log(xml);
+      //var xml = export_project_xml();
+      $('#corral-cover').addClass('hidden');
+      if ( first_click ) {
+        $('#snap').load(function () {
+          load_project_uri(btn_to_name[index] + '.xml');
+        });
+      }
+      else {
+        $('#snap').load(function () {
+          load_project_xml(xml);
+        });
+      }
+      $('#snap').attr('src', 'full-interface/snap.html');
+    });
   }
   else {
     $('#corral-cover').removeClass('hidden');
-    if (index !== 0) {
-      get_proj_xml ( name + ".xml", load_hidden_blocks);
+    if (index !== 0 || !first_click) {
+      get_proj_xml ( name + ".xml", partial_load_xml);
     }
   }
   $('.btn-top').eq(index).button('toggle');
