@@ -218,11 +218,17 @@ function btn_click () {
     var xml = export_project_xml();
     $('#corral-cover').addClass('hidden');
     $('#snap').attr('src', 'full-interface/snap.html');
-    setTimeout(function () {
-      load_project_xml(xml);
-      },
-      500);
+    if ( first_click ) {
+      $('#snap').load(function () {
+        load_project_uri(btn_to_name[index] + '.xml');
+      });
     }
+    else {
+      $('#snap').load(function () {
+        load_project_xml(xml);
+      });
+    }
+  }
   else {
     $('#corral-cover').removeClass('hidden');
     if (index !== 0) {
@@ -255,6 +261,7 @@ function btn_click () {
   prepare_modal(current_lesson, function () {
     $('#myModal').modal('toggle');
   });
+  first_click = false;
 }
 
 function next_lesson() {
@@ -282,6 +289,7 @@ $(document).ready(function () {
 
 var first_lesson_loaded = false;
 
+var first_click = true;
 $(window).load(function () {
   var is_chrome = navigator.userAgent.toLowerCase().indexOf('chrome') > -1;
   if (!(is_chrome)) {
