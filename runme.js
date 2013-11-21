@@ -78,7 +78,7 @@ function congrats() {
     $('.modal-body').html(congrats_html);
     $('#myModal').modal('show');
     share(function(data) {
-      $('.modal-body').html(congrats_html + "<br>Use this link to share your code: <a href=" + data + " target='_blank'>" + data + "</a>");
+      $('.modal-body').html(congrats_html + "<br><h4>Use this link to share your code: <a href=" + data + " target='_blank'>" + data + "</a></h4>");
     });
 }
 
