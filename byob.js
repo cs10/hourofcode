@@ -1039,10 +1039,11 @@ function BlockDialogMorph(target, action, environment) {
 BlockDialogMorph.prototype.init = function (target, action, environment) {
     // additional properties:
     this.blockType = 'command';
-    this.category = 'other';
+    this.category = 'motion';
     this.isGlobal = true;
     this.types = null;
     this.categories = null;
+    console.log('BlockDialogMorph.init!');
 
     // initialize inherited properties:
     BlockDialogMorph.uber.init.call(
@@ -1055,20 +1056,20 @@ BlockDialogMorph.prototype.init = function (target, action, environment) {
     // override inherited properites:
     this.key = 'makeABlock';
 
-    this.types = new AlignmentMorph('row', this.padding);
-    this.add(this.types);
-    this.scopes = new AlignmentMorph('row', this.padding);
-    this.add(this.scopes);
+    this.types = new AlignmentMorph('row', 0);
+    //this.add(this.types);
+    this.scopes = new AlignmentMorph('row', 0);
+    //this.add(this.scopes);
 
-    this.categories = new BoxMorph();
-    this.categories.color = SpriteMorph.prototype.paletteColor.lighter(8);
-    this.categories.borderColor = this.categories.color.lighter(40);
-    this.createCategoryButtons();
-    this.fixCategoriesLayout();
-    this.add(this.categories);
+    //this.categories = new BoxMorph();
+    //this.categories.color = SpriteMorph.prototype.paletteColor.lighter(8);
+    //this.categories.borderColor = this.categories.color.lighter(40);
+    //this.createCategoryButtons();
+    //this.fixCategoriesLayout();
+    //this.add(this.categories);
 
     this.createTypeButtons();
-    this.createScopeButtons();
+    //this.createScopeButtons();
     this.fixLayout();
 };
 
@@ -1371,19 +1372,19 @@ BlockDialogMorph.prototype.fixLayout = function () {
         )));
         this.silentSetWidth(this.body.width() + this.padding * 2);
         this.silentSetHeight(
-            this.body.height()
-                + this.padding * 2
-                + th
+            //this.body.height()
+                this.padding
+                //+ th
         );
         if (this.categories) {
             this.categories.setCenter(this.body.center());
             this.categories.setTop(this.body.top());
             this.body.setTop(this.categories.bottom() + this.padding);
-            this.silentSetHeight(
-                this.height()
-                    + this.categories.height()
-                    + this.padding
-            );
+            //this.silentSetHeight(
+                //this.height()
+                    //+ this.categories.height()
+                    //+ this.padding
+            //);
         }
     } else if (this.head) { // when changing an existing prototype
         if (this.types) {
@@ -1400,19 +1401,19 @@ BlockDialogMorph.prototype.fixLayout = function () {
         }
         this.head.setCenter(this.center());
         this.head.setTop(th + this.padding);
-        this.silentSetHeight(
-            this.head.height()
-                + this.padding * 2
-                + th
-        );
+        //this.silentSetHeight(
+            //this.head.height()
+                //+ this.padding * 2
+                //+ th
+        //);
         if (this.categories) {
             this.categories.setCenter(this.center());
             this.categories.setTop(this.head.bottom() + this.padding);
-            this.silentSetHeight(
-                this.height()
-                    + this.categories.height()
-                    + this.padding
-            );
+            //this.silentSetHeight(
+                //this.height()
+                    //+ this.categories.height()
+                    //+ this.padding
+            //);
         }
     }
 

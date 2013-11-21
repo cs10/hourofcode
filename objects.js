@@ -1728,7 +1728,7 @@ SpriteMorph.prototype.blockTemplates = function (category) {
         blocks.push(block('reifyScript'));
         blocks.push(block('reifyReporter'));
         blocks.push(block('reifyPredicate'));
-        blocks.push('#');
+        //blocks.push('#');
         blocks.push('-');
         blocks.push(block('reportSum'));
         blocks.push(block('reportDifference'));
@@ -1782,33 +1782,33 @@ SpriteMorph.prototype.blockTemplates = function (category) {
     //} else if (cat === 'variables') {
     blocks.push('=');
 
-        //button = new PushButtonMorph(
-            //null,
-            //function () {
-                //new VariableDialogMorph(
-                    //null,
-                    //function (pair) {
-                        //if (pair && !myself.variables.silentFind(pair[0])) {
-                            //myself.addVariable(pair[0], pair[1]);
-                            //myself.toggleVariableWatcher(pair[0], pair[1]);
-                            //myself.blocksCache[cat] = null;
-                            //myself.paletteCache[cat] = null;
-                            //myself.parentThatIsA(IDE_Morph).refreshPalette();
-                        //}
-                    //},
-                    //myself
-                //).prompt(
-                    //'Variable name',
-                    //null,
-                    //myself.world()
-                //);
-            //},
-            //'Make a variable'
-        //);
-        //button.userMenu = helpMenu;
-        //button.selector = 'addVariable';
-        //button.showHelp = BlockMorph.prototype.showHelp;
-        //blocks.push(button);
+        button = new PushButtonMorph(
+            null,
+            function () {
+                new VariableDialogMorph(
+                    null,
+                    function (pair) {
+                        if (pair && !myself.variables.silentFind(pair[0])) {
+                            myself.addVariable(pair[0], pair[1]);
+                            myself.toggleVariableWatcher(pair[0], pair[1]);
+                            myself.blocksCache[cat] = null;
+                            myself.paletteCache[cat] = null;
+                            myself.parentThatIsA(IDE_Morph).refreshPalette();
+                        }
+                    },
+                    myself
+                ).prompt(
+                    'Variable name',
+                    null,
+                    myself.world()
+                );
+            },
+            'Make a variable'
+        );
+        button.userMenu = helpMenu;
+        button.selector = 'addVariable';
+        button.showHelp = BlockMorph.prototype.showHelp;
+        blocks.push(button);
 
         if (this.variables.allNames().length > 0) {
             button = new PushButtonMorph(
@@ -1892,38 +1892,38 @@ SpriteMorph.prototype.blockTemplates = function (category) {
             blocks.push('=');
         }
 
-        //button = new PushButtonMorph(
-            //null,
-            //function () {
-                //var ide = myself.parentThatIsA(IDE_Morph),
-                    //stage = myself.parentThatIsA(StageMorph);
-                //new BlockDialogMorph(
-                    //null,
-                    //function (definition) {
-                        //if (definition.spec !== '') {
-                            //if (definition.isGlobal) {
-                                //stage.globalBlocks.push(definition);
-                            //} else {
-                                //myself.customBlocks.push(definition);
-                            //}
-                            //ide.flushPaletteCache();
-                            //ide.refreshPalette();
-                            //new BlockEditorMorph(definition, myself).popUp();
-                        //}
-                    //},
-                    //myself
-                //).prompt(
-                    //'Make a block',
-                    //null,
-                    //myself.world()
-                //);
-            //},
-            //'Make a block'
-        //);
-        //button.userMenu = helpMenu;
-        //button.selector = 'addCustomBlock';
-        //button.showHelp = BlockMorph.prototype.showHelp;
-        //blocks.push(button);
+        button = new PushButtonMorph(
+            null,
+            function () {
+                var ide = myself.parentThatIsA(IDE_Morph),
+                    stage = myself.parentThatIsA(StageMorph);
+                new BlockDialogMorph(
+                    null,
+                    function (definition) {
+                        if (definition.spec !== '') {
+                            if (definition.isGlobal) {
+                                stage.globalBlocks.push(definition);
+                            } else {
+                                myself.customBlocks.push(definition);
+                            }
+                            ide.flushPaletteCache();
+                            ide.refreshPalette();
+                            new BlockEditorMorph(definition, myself).popUp();
+                        }
+                    },
+                    myself
+                ).prompt(
+                    'Make a block',
+                    null,
+                    myself.world()
+                );
+            },
+            'Make a block'
+        );
+        button.userMenu = helpMenu;
+        button.selector = 'addCustomBlock';
+        button.showHelp = BlockMorph.prototype.showHelp;
+        blocks.push(button);
     //}
     return blocks;
 };
@@ -4234,7 +4234,7 @@ StageMorph.prototype.blockTemplates = function (category) {
         );
     }
 
-    if (cat === 'motion') {
+    //if (cat === 'motion') {
 
         txt = new TextMorph(localize(
             'Stage selected:\nno motion primitives'
@@ -4243,7 +4243,7 @@ StageMorph.prototype.blockTemplates = function (category) {
         txt.setColor(this.paletteTextColor);
         blocks.push(txt);
 
-    } else if (cat === 'looks') {
+    //} else if (cat === 'looks') {
 
         blocks.push(block('doSwitchToCostume'));
         blocks.push(block('doWearNextCostume'));
@@ -4271,7 +4271,7 @@ StageMorph.prototype.blockTemplates = function (category) {
 
     /////////////////////////////////
 
-    } else if (cat === 'sound') {
+    //} else if (cat === 'sound') {
 
         blocks.push(block('playSound'));
         blocks.push(block('doPlaySoundUntilDone'));
@@ -4286,11 +4286,11 @@ StageMorph.prototype.blockTemplates = function (category) {
         blocks.push(watcherToggle('getTempo'));
         blocks.push(block('getTempo'));
 
-    } else if (cat === 'pen') {
+    //} else if (cat === 'pen') {
 
         blocks.push(block('clear'));
 
-    } else if (cat === 'control') {
+    //} else if (cat === 'control') {
 
         blocks.push(block('receiveGo'));
         blocks.push(block('receiveKey'));
@@ -4338,7 +4338,7 @@ StageMorph.prototype.blockTemplates = function (category) {
         blocks.push('-');
         blocks.push(block('doPauseAll'));
 
-    } else if (cat === 'sensing') {
+    //} else if (cat === 'sensing') {
 
         blocks.push(block('doAsk'));
         blocks.push(watcherToggle('getLastAnswer'));
@@ -4380,12 +4380,12 @@ StageMorph.prototype.blockTemplates = function (category) {
 
     /////////////////////////////////
 
-    } else if (cat === 'operators') {
+    //} else if (cat === 'operators') {
 
         blocks.push(block('reifyScript'));
         blocks.push(block('reifyReporter'));
         blocks.push(block('reifyPredicate'));
-        blocks.push('#');
+        //blocks.push('#');
         blocks.push('-');
         blocks.push(block('reportSum'));
         blocks.push(block('reportDifference'));
@@ -4436,7 +4436,7 @@ StageMorph.prototype.blockTemplates = function (category) {
 
     //////////////////////////////////
 
-    } else if (cat === 'variables') {
+    //} else if (cat === 'variables') {
 
         button = new PushButtonMorph(
             null,
@@ -4542,35 +4542,35 @@ StageMorph.prototype.blockTemplates = function (category) {
             blocks.push('=');
         }
 
-        //button = new PushButtonMorph(
-            //null,
-            //function () {
-                //var ide = myself.parentThatIsA(IDE_Morph);
-                //new BlockDialogMorph(
-                    //null,
-                    //function (definition) {
-                        //if (definition.spec !== '') {
-                            //if (definition.isGlobal) {
-                                //myself.globalBlocks.push(definition);
-                            //} else {
-                                //myself.customBlocks.push(definition);
-                            //}
-                            //ide.flushPaletteCache();
-                            //ide.refreshPalette();
-                            //new BlockEditorMorph(definition, myself).popUp();
-                        //}
-                    //},
-                    //myself
-                //).prompt(
-                    //'Make a block',
-                    //null,
-                    //myself.world()
-                //);
-            //},
-            //'Make a block'
-        //);
-        //blocks.push(button);
-    }
+        button = new PushButtonMorph(
+            null,
+            function () {
+                var ide = myself.parentThatIsA(IDE_Morph);
+                new BlockDialogMorph(
+                    null,
+                    function (definition) {
+                        if (definition.spec !== '') {
+                            if (definition.isGlobal) {
+                                myself.globalBlocks.push(definition);
+                            } else {
+                                myself.customBlocks.push(definition);
+                            }
+                            ide.flushPaletteCache();
+                            ide.refreshPalette();
+                            new BlockEditorMorph(definition, myself).popUp();
+                        }
+                    },
+                    myself
+                ).prompt(
+                    'Make a block',
+                    null,
+                    myself.world()
+                );
+            },
+            'Make a block'
+        );
+        blocks.push(button);
+    //}
     return blocks;
 };
 
