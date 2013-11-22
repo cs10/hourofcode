@@ -300,8 +300,9 @@ var first_click = true;
 $(window).load(function () {
   var is_chrome = navigator.userAgent.toLowerCase().indexOf('chrome') > -1;
   if (!(is_chrome)) {
-    $("body").empty();
-    $("body").append("<div id='chrome-message'>Try me on <a href='http://www.google.com/chrome' target='_blank'>Google Chrome</a>!</div>");
+    $("#right").empty();
+    $("#myModal").remove();
+    $("#right").append("<div id='chrome-message'>Welcome to our Hour of Code! Please use us on <a href='http://www.google.com/chrome' target='_blank'>Google Chrome</a>.</div>");
     $("#chrome-message").show();
   }
   var top_buttons = $('#buttons-top')
