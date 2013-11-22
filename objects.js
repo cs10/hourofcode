@@ -1782,6 +1782,7 @@ SpriteMorph.prototype.blockTemplates = function (category) {
     //} else if (cat === 'variables') {
     blocks.push('=');
 
+        if (window.show_make_a_variable) {
         button = new PushButtonMorph(
             null,
             function () {
@@ -1809,6 +1810,7 @@ SpriteMorph.prototype.blockTemplates = function (category) {
         button.selector = 'addVariable';
         button.showHelp = BlockMorph.prototype.showHelp;
         blocks.push(button);
+        }
 
         if (this.variables.allNames().length > 0) {
             button = new PushButtonMorph(
@@ -1892,6 +1894,7 @@ SpriteMorph.prototype.blockTemplates = function (category) {
             blocks.push('=');
         }
 
+        if (window.show_make_a_block) {
         button = new PushButtonMorph(
             null,
             function () {
@@ -1924,7 +1927,7 @@ SpriteMorph.prototype.blockTemplates = function (category) {
         button.selector = 'addCustomBlock';
         button.showHelp = BlockMorph.prototype.showHelp;
         blocks.push(button);
-    //}
+    }
     return blocks;
 };
 
@@ -4438,6 +4441,7 @@ StageMorph.prototype.blockTemplates = function (category) {
 
     //} else if (cat === 'variables') {
 
+        if (window.show_make_a_variable) {
         button = new PushButtonMorph(
             null,
             function () {
@@ -4462,6 +4466,7 @@ StageMorph.prototype.blockTemplates = function (category) {
             'Make a variable'
         );
         blocks.push(button);
+        }
 
         if (this.variables.allNames().length > 0) {
             button = new PushButtonMorph(
@@ -4542,6 +4547,7 @@ StageMorph.prototype.blockTemplates = function (category) {
             blocks.push('=');
         }
 
+        if (window.show_make_a_block) {
         button = new PushButtonMorph(
             null,
             function () {
@@ -4570,6 +4576,7 @@ StageMorph.prototype.blockTemplates = function (category) {
             'Make a block'
         );
         blocks.push(button);
+        }
     //}
     return blocks;
 };

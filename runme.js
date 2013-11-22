@@ -238,6 +238,12 @@ function btn_click () {
   }
   else {
     $('#corral-cover').removeClass('hidden');
+    if (index >= 4) {
+      document.getElementById('snap').contentWindow.show_make_a_variable = true;
+    }
+    else {
+      document.getElementById('snap').contentWindow.show_make_a_variable = false;
+    }
     if (index !== 0 || !first_click) {
       get_proj_xml ( name + ".xml", partial_load_xml);
     }
