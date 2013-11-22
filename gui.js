@@ -1476,12 +1476,14 @@ IDE_Morph.prototype.setExtent = function (point) {
             this.controlBar.height() + 10
         );
     } else {
-    /* // auto-switches to small stage mode, commented out b/c I don't like it
         if (point.x < 910) {
             this.isSmallStage = true;
             this.stageRatio = 0.5;
         }
-    */
+        else {
+            this.isSmallStage = false;
+            this.stageRatio = 1.0;
+        }
         minExt = this.isSmallStage ?
                 new Point(700, 350) : new Point(910, 490);
     }
