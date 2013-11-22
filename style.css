@@ -11,7 +11,7 @@ body {
   background-color: #131141;
   height: 130px;
   overflow: auto;
-  overflow-y: hidden;
+  /*overflow-y: hidden;*/
 }
 
 
