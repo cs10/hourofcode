@@ -44,7 +44,19 @@ function xmlToString(xmlData) {
 function partial_load_xml(answer) {
   var myXML = $.parseXML(export_project_xml());
   var otherXML = $.parseXML(answer);
+  var oldHidden = $(myXML).find('hidden').text().split(' ');
+  var newHidden = $(otherXML).find('hidden').text().split(' ');
+  var newBlocks = [];
+  for (var i in oldHidden) {
+    if (newHidden.indexOf(oldHidden[i]) === -1) {
+      newBlocks.push(oldHidden[i]);
+    }
+  }
   $(myXML).find('hidden').text($(otherXML).find('hidden').text());
+  var project = myXML.getElementsByTagName('project')[0];
+  var newBlocksNode = myXML.createElement('new');
+  newBlocksNode.appendChild(myXML.createTextNode(newBlocks.join(' ')));
+  project.appendChild(newBlocksNode);
   var str = xmlToString(myXML);
   load_project_xml(str);
   return str;
