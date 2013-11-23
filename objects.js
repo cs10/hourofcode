@@ -1816,27 +1816,27 @@ SpriteMorph.prototype.blockTemplates = function (category) {
         blocks.push(button);
         }
 
-        if (this.variables.allNames().length > 0) {
-            button = new PushButtonMorph(
-                null,
-                function () {
-                    var menu = new MenuMorph(
-                        myself.deleteVariable,
-                        null,
-                        myself
-                    );
-                    myself.variables.allNames().forEach(function (name) {
-                        menu.addItem(name, name);
-                    });
-                    menu.popUpAtHand(myself.world());
-                },
-                'Delete a variable'
-            );
-            button.userMenu = helpMenu;
-            button.selector = 'deleteVariable';
-            button.showHelp = BlockMorph.prototype.showHelp;
-            blocks.push(button);
-        }
+        //if (this.variables.allNames().length > 0) {
+            //button = new PushButtonMorph(
+                //null,
+                //function () {
+                    //var menu = new MenuMorph(
+                        //myself.deleteVariable,
+                        //null,
+                        //myself
+                    //);
+                    //myself.variables.allNames().forEach(function (name) {
+                        //menu.addItem(name, name);
+                    //});
+                    //menu.popUpAtHand(myself.world());
+                //},
+                //'Delete a variable'
+            //);
+            //button.userMenu = helpMenu;
+            //button.selector = 'deleteVariable';
+            //button.showHelp = BlockMorph.prototype.showHelp;
+            //blocks.push(button);
+        //}
 
         blocks.push('-');
 
@@ -4473,24 +4473,24 @@ StageMorph.prototype.blockTemplates = function (category) {
         blocks.push(button);
         }
 
-        if (this.variables.allNames().length > 0) {
-            button = new PushButtonMorph(
-                null,
-                function () {
-                    var menu = new MenuMorph(
-                        myself.deleteVariable,
-                        null,
-                        myself
-                    );
-                    myself.variables.allNames().forEach(function (name) {
-                        menu.addItem(name, name);
-                    });
-                    menu.popUpAtHand(myself.world());
-                },
-                'Delete a variable'
-            );
-            blocks.push(button);
-        }
+        //if (this.variables.allNames().length > 0) {
+            //button = new PushButtonMorph(
+                //null,
+                //function () {
+                    //var menu = new MenuMorph(
+                        //myself.deleteVariable,
+                        //null,
+                        //myself
+                    //);
+                    //myself.variables.allNames().forEach(function (name) {
+                        //menu.addItem(name, name);
+                    //});
+                    //menu.popUpAtHand(myself.world());
+                //},
+                //'Delete a variable'
+            //);
+            //blocks.push(button);
+        //}
 
         blocks.push('-');
 
