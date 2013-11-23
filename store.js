@@ -392,6 +392,17 @@ SnapSerializer.prototype.loadProjectModel = function (xmlNode) {
         );
     }
 
+    model.newPrimitives = model.project.childNamed('new');
+    if (model.newPrimitives) {
+        model.newPrimitives.contents.split(' ').forEach(
+            function (sel) {
+                if (sel) {
+                    StageMorph.prototype.newPrimitives[sel] = true;
+                }
+            }
+        );
+    }
+
     model.codeHeaders = model.project.childNamed('headers');
     if (model.codeHeaders) {
         model.codeHeaders.children.forEach(function (xml) {

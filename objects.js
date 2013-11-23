@@ -1461,6 +1461,10 @@ SpriteMorph.prototype.blockTemplates = function (category) {
         }
         var newBlock = SpriteMorph.prototype.blockForSelector(selector, true);
         newBlock.isTemplate = true;
+        if (StageMorph.prototype.newPrimitives[selector]) {
+          newBlock.highlight(new Color(0, 0, 0), 100, 100);
+          newBlock.addHighlight();
+        }
         return newBlock;
     }
 
@@ -3674,6 +3678,7 @@ StageMorph.prototype.paletteTextColor
     = SpriteMorph.prototype.paletteTextColor;
 
 StageMorph.prototype.hiddenPrimitives = {};
+StageMorph.prototype.newPrimitives = {};
 StageMorph.prototype.codeMappings = {};
 StageMorph.prototype.codeHeaders = {};
 StageMorph.prototype.enableCodeMapping = false;

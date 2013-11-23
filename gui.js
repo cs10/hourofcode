@@ -2621,6 +2621,7 @@ IDE_Morph.prototype.newProject = function () {
     this.currentSprite = new SpriteMorph(this.globalVariables);
     this.sprites = new List([this.currentSprite]);
     StageMorph.prototype.hiddenPrimitives = {};
+    StageMorph.prototype.newPrimitives = {};
     StageMorph.prototype.codeMappings = {};
     StageMorph.prototype.codeHeaders = {};
     StageMorph.prototype.enableCodeMapping = false;
@@ -2774,6 +2775,7 @@ IDE_Morph.prototype.rawOpenProjectString = function (str) {
     this.toggleAppMode(false);
     this.spriteBar.tabBar.tabTo('scripts');
     StageMorph.prototype.hiddenPrimitives = {};
+    StageMorph.prototype.newPrimitives = {};
     StageMorph.prototype.codeMappings = {};
     StageMorph.prototype.codeHeaders = {};
     StageMorph.prototype.enableCodeMapping = false;
@@ -2808,6 +2810,7 @@ IDE_Morph.prototype.openCloudDataString = function (str) {
 IDE_Morph.prototype.rawOpenCloudDataString = function (str) {
     var model;
     StageMorph.prototype.hiddenPrimitives = {};
+    StageMorph.prototype.newPrimitives = {};
     StageMorph.prototype.codeMappings = {};
     StageMorph.prototype.codeHeaders = {};
     StageMorph.prototype.enableCodeMapping = false;
