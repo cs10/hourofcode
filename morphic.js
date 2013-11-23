@@ -9492,15 +9492,15 @@ HandMorph.prototype.processTouchStart = function (event) {
     MorphicPreferences.isTouchDevice = true;
     clearInterval(this.touchHoldTimeout);
     if (event.touches.length === 1) {
-        //this.touchHoldTimeout = setInterval( // simulate mouseRightClick
-            //function () {
-                //myself.processMouseDown({button: 2});
-                //myself.processMouseUp({button: 2});
-                //event.preventDefault();
-                //clearInterval(myself.touchHoldTimeout);
-            //},
-            //400
-        //);
+        this.touchHoldTimeout = setInterval( // simulate mouseRightClick
+            function () {
+                myself.processMouseDown({button: 2});
+                myself.processMouseUp({button: 2});
+                event.preventDefault();
+                clearInterval(myself.touchHoldTimeout);
+            },
+            400
+        );
         this.processMouseMove(event.touches[0]); // update my position
         this.processMouseDown({button: 0});
         event.preventDefault();
