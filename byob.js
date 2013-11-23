@@ -1043,7 +1043,6 @@ BlockDialogMorph.prototype.init = function (target, action, environment) {
     this.isGlobal = true;
     this.types = null;
     this.categories = null;
-    console.log('BlockDialogMorph.init!');
 
     // initialize inherited properties:
     BlockDialogMorph.uber.init.call(
