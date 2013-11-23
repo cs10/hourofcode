@@ -215,15 +215,14 @@ function get_proj_xml ( uri, callback ) {
 function btn_click () {
   var index = parseInt($(this).data('index'));
   var name = btn_to_name[index];
+  var first_click_copy = first_click;
   $('.btn-top').eq(current_lesson).button('toggle');
   if (index === btn_to_name.length - 1) {
+    console.log('Hiding corral-cover.');
+    $('#corral-cover').addClass('my-hidden');
     get_proj_xml ( name + ".xml", function (lastXML) {
-      console.log('loading last xml:', name + '.xml');
       var xml = partial_load_xml(lastXML);
-      console.log(xml);
-      //var xml = export_project_xml();
-      $('#corral-cover').addClass('hidden');
-      if ( first_click ) {
+      if ( first_click_copy ) {
         $('#snap').load(function () {
           load_project_uri(btn_to_name[index] + '.xml');
         });
@@ -237,14 +236,15 @@ function btn_click () {
     });
   }
   else {
-    $('#corral-cover').removeClass('hidden');
+    $('#corral-cover').removeClass('my-hidden');
     if (index >= 4) {
       document.getElementById('snap').contentWindow.show_make_a_variable = true;
     }
     else {
       document.getElementById('snap').contentWindow.show_make_a_variable = false;
     }
-    if (index !== 0 || !first_click) {
+    //if (index !== 0 || !first_click) {
+    if (!first_click) {
       get_proj_xml ( name + ".xml", partial_load_xml);
     }
   }
@@ -330,9 +330,9 @@ $(window).load(function () {
       {class:'btn-top btn btn-lg btn-default'})
       .text('#' + (i + 1)).data('index', i).on('click', btn_click));
     }
+  load_project_uri ( btn_to_name[current_lesson] + '.xml' );
   $(".btn-top").eq(current_lesson).button('toggle');
   $(".btn-top").eq(current_lesson).click();
-  load_project_uri ( btn_to_name[current_lesson] + '.xml' );
   place_corral_cover();
   $("#next-button").on('click', next_lesson);
 });
