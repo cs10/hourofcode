@@ -194,7 +194,7 @@ function corralBtn(text, callback) {
 
 function show_answer() {
     place_in_corral_cover ([$('<img>',
-          {width: "200px", src: btn_to_name[current_lesson] + '_answer.gif'}),
+          {width: "400px", src: 'pngs/' + btn_to_name[current_lesson] + '_answer.png'}).css("margin-left", "-80px"),
         corralBtn('Do it for me.', do_it_for_me)
         ]);
 }
@@ -296,14 +296,20 @@ function next_lesson() {
 function prepare_modal(idx, callback) {
   load_left(idx, function (leftText) {
     $('.modal-title').html(idx_to_title[idx]);
-    $('.modal-body').html(leftText);
-    $('.modal-body').append($('<button>',
-        {class:'btn btn-lg btn-primary', style: 'margin-left:80%;', text:'Okay'}
-      ).click(function () {
-      $('#myModal').modal('toggle');
-    }));
-    callback();
+    $.ajax({
+      url : "modaltext/" + btn_to_name[idx] + "_modal.html",
+      dataType: "text",
+                success : function (data) {
+                  $('.modal-body').html(data);
+                  $('.modal-body').append($('<button>',
+                    {class:'btn btn-lg btn-primary', style: 'margin-left:80%;', text:'Okay'}
+                    ).click(function () {
+                      $('#myModal').modal('toggle');
+                  }));
+                  callback();
+                }
     });
+  });
 }
 
 $(document).ready(function () {
