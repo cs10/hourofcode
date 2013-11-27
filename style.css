@@ -17,6 +17,7 @@ body {
 
 #left {
   width: 25%;
+  height: 60%;
   float: left;
   overflow: scroll;
 }
@@ -46,6 +47,7 @@ body {
 .lab-page {
     padding: 10px;
     font-size: 16px;
+    overflow: scroll;
 }
 
 .left {
