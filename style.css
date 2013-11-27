@@ -17,9 +17,8 @@ body {
 
 #left {
   width: 25%;
-  height: 90%;
-  overflow: auto;
   float: left;
+  overflow: scroll;
 }
 
 #chrome-message {

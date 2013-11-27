@@ -302,7 +302,7 @@ function prepare_modal(idx, callback) {
                 success : function (data) {
                   $('.modal-body').html(data);
                   $('.modal-body').append($('<button>',
-                    {class:'btn btn-lg btn-primary', style: 'margin-left:80%;', text:'Okay'}
+                    {class:'btn btn-lg btn-primary', style: 'margin-left:80%;', text:'OK'}
                     ).click(function () {
                       $('#myModal').modal('toggle');
                   }));
