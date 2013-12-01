@@ -101,21 +101,29 @@ function congrats() {
     });
 }
 
-
 function place_corral_cover () {
   var pos = document.getElementById('snap').contentWindow.corralPos;
   var snap = $('#snap').offset();
   var padding = 5;
+  var corral_cover = $("#corral-cover");
   if (pos !== undefined) {
-    $("#corral-cover").offset({
+    corral_cover.offset({
       top: pos.y + snap.top + padding,
       left: pos.x + snap.left + padding
       });
-    $("#corral-cover").width(pos.width - padding);
-    $("#corral-cover").height(pos.height - 2 * padding);
-    $('#corral-cover').children().each(function (i,j) {
+    corral_cover.width(pos.width - padding);
+    corral_cover.height(pos.height - 2 * padding);
+    corral_cover.children().each(function (i,j) {
       var v = $(this).offsetWidth;
     });
+  }
+  if (corral_cover.width() < 300) {
+    large_buttons = $('.btn-lg');
+    large_buttons.removeClass('btn-lg');
+    large_buttons.addClass('had-btn-lg');
+  }
+  else {
+    $('.had-btn-lg').addClass('btn-lg').removeClass('had-btn-lg');
   }
 }
 
