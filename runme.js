@@ -117,6 +117,11 @@ function place_corral_cover () {
       var v = $(this).offsetWidth;
     });
   }
+  check_lg_buttons ();
+}
+
+function check_lg_buttons () {
+  var corral_cover = $("#corral-cover");
   if (corral_cover.width() < 300) {
     var large_buttons = $('.btn-lg');
     large_buttons.removeClass('btn-lg');
@@ -182,6 +187,7 @@ function place_in_corral_cover(elems) {
   var inner = $('<div>', {class: 'div-corral-cover-inner'});
   corralCover.append($('<div>', {class: 'div-corral-cover'}).append(inner));
   inner.append(elems);
+  check_lg_buttons();
 }
 
 function do_it_for_me() {
