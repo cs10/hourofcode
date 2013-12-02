@@ -59,8 +59,8 @@ body {
 }
 
 .page-subtitle {
-  float: left;
-  padding-left: 0.5em;
+  float: right;
+  padding-right: 0.5em;
   padding-top: 2em;
   font-size: 1.5em;
   color: white;
@@ -86,16 +86,16 @@ body {
 }
 
 #snaplogo-img {
-  float: left;
+  float: right;
   width: 5em;
   margin-top: 2.5em;
-  margin-left: 1em;
+  margin-right: 1em;
 }
 
 #done-button {
   float: right;
   padding-right: 2em;
-  padding-top: 2em;
+  padding-top: 2.5em;
 }
 
 #next-button {
