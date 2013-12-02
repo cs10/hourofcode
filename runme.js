@@ -118,7 +118,7 @@ function place_corral_cover () {
     });
   }
   if (corral_cover.width() < 300) {
-    large_buttons = $('.btn-lg');
+    var large_buttons = $('.btn-lg');
     large_buttons.removeClass('btn-lg');
     large_buttons.addClass('had-btn-lg');
   }
@@ -272,6 +272,8 @@ function btn_click () {
   current_lesson = index;
   if (current_lesson + 1 === btn_to_name.length) {
     $('#done-button').removeClass('hidden');
+    $('#snaplogo-img').addClass('hidden');
+    $('#made-with').addClass('hidden');
     $('#next-button').addClass('hidden');
   }
   else {

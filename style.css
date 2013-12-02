@@ -7,19 +7,17 @@ body {
 }
 
 #top {
-  /*background: linear-gradient(45deg, #131141 0%,#8d4363 100%);*/
   background-color: #131141;
-  height: 130px;
-  overflow: auto;
-  /*overflow-y: hidden;*/
+  height: 8em;
+  overflow-y: auto;
 }
 
 
 #left {
   width: 25%;
-  height: 60%;
+  height: 80%;
   float: left;
-  overflow: scroll;
+  overflow-y: auto;
 }
 
 #chrome-message {
@@ -40,14 +38,12 @@ body {
 #right {
   height: 90%;
   overflow: hidden;
-  margin: 10px;
 }
 
 
 .lab-page {
     padding: 10px;
     font-size: 16px;
-    overflow: scroll;
 }
 
 .left {
@@ -56,17 +52,17 @@ body {
 
 .page-title {
   float: left;
-  padding-left: 30px;
-  padding-top: 30px;
-  font-size: 50px;
+  padding-left: 0.5em;
+  padding-top: 0.9em;
+  font-size: 2.5em;
   color: white;
 }
 
 .page-subtitle {
   float: left;
-  padding-left: 50px;
-  padding-top: 50px;
-  font-size: 20px;
+  padding-left: 0.5em;
+  padding-top: 2em;
+  font-size: 1.5em;
   color: white;
 }
 
@@ -79,30 +75,33 @@ body {
 
 #bjclogo-img {
   float: left;
-  width: 90px;
-  padding-top: 20px;
-  padding-left: 30px;
+  width: 5em;
+  padding-top: 1em;
+  padding-left: 1em;
+}
+
+#buttons-top {
+  margin-top: 1.3em;
+  margin-left: 0.5em;
 }
 
 #snaplogo-img {
   float: left;
-  width: 90px;
-  margin-top: 35px;
-  margin-left: 10px;
+  width: 5em;
+  margin-top: 2.5em;
+  margin-left: 1em;
 }
 
 #done-button {
   float: right;
-  padding-right: 30px;
-  padding-top: 35;
-  color: white;
+  padding-right: 2em;
+  padding-top: 2em;
 }
 
 #next-button {
   float: right;
-  padding-right: 30px;
-  padding-top: 35;
-  color: white;
+  padding-right: 2em;
+  padding-top: 2.5em;
 }
 
 #corral-cover {
