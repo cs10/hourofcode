@@ -202,7 +202,7 @@ function corralBtn(text, callback) {
 
 function show_answer() {
     place_in_corral_cover ([$('<img>',
-          {width: "400px", src: 'pngs/' + btn_to_name[current_lesson] + '_answer.png'}).css("margin-left", "-80px"),
+          {'class': 'answer-png', src: 'pngs/' + btn_to_name[current_lesson] + '_answer.png'}),
         corralBtn('Do it for me.', do_it_for_me)
         ]);
 }

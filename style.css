@@ -129,3 +129,8 @@ body {
 .my-hidden {
   visibility: hidden;
 }
+
+.answer-png {
+  width: 100%;
+  padding: 1em;
+}
