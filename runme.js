@@ -2,7 +2,7 @@ var waitForFinalEvent = (function () {
   var timers = {};
   return function (callback, ms, uniqueId) {
     if (timers[uniqueId]) {
-      clearTimeout (timers[uniqueId]);
+      clearTimeout(timers[uniqueId]);
     }
     timers[uniqueId] = setTimeout(callback, ms);
   };
@@ -13,9 +13,11 @@ var current_lesson = 0;
 function load_project_uri(uri, callback) {
   var request = new XMLHttpRequest ();
   request.onload = function () {
-    load_project_xml ( this.responseText );
-    if (callback) {
-      callback ();
+    if (callback !== undefined) {
+      callback(this.responseText);
+    }
+    else {
+      load_project_xml(this.responseText);
     }
   };
   request.open("get", uri, true);
@@ -44,8 +46,11 @@ function xmlToString(xmlData) {
     return xmlString;
 }
 
-function partial_load_xml(answer) {
-  var myXML = $.parseXML(export_project_xml());
+function partial_load_xml(answer, ownXML) {
+  if (ownXML === undefined) {
+    ownXML = export_project_xml();
+  }
+  var myXML = $.parseXML(ownXML);
   var otherXML = $.parseXML(answer);
   var oldHidden = $(myXML).find('hidden').text().split(' ');
   var newHidden = $(otherXML).find('hidden').text().split(' ');
@@ -195,7 +200,11 @@ function place_in_corral_cover(elems) {
 
 function do_it_for_me() {
   if (current_lesson !== btn_to_name.length - 1) {
-    load_project_uri(btn_to_name[current_lesson + 1] + ".xml");
+    var current_xml = export_project_xml();
+    load_project_uri(btn_to_name[current_lesson + 1] + ".xml",
+        function (xml) {
+          partial_load_xml(current_xml, xml);
+        });
   } else {
     load_project_uri("bjchoc_10.xml");
   }
@@ -249,7 +258,6 @@ function btn_click () {
   var first_click_copy = first_click;
   $('.btn-top').eq(current_lesson).button('toggle');
   if (index === btn_to_name.length - 1) {
-    console.log('Hiding corral-cover.');
     $('#corral-cover').addClass('my-hidden');
     get_proj_xml ( name + ".xml", function (lastXML) {
       var xml = partial_load_xml(lastXML);
@@ -369,7 +377,15 @@ $(window).load(function () {
       {class:'btn-top btn btn-lg btn-default'})
       .text('#' + (i + 1)).data('index', i).on('click', btn_click));
     }
-  load_project_uri ( btn_to_name[current_lesson] + '.xml', place_corral_cover );
+  load_project_uri(btn_to_name[current_lesson] + '.xml', 
+      function (xml) {
+        load_project_xml(xml);
+        place_corral_cover();
+        // Why is this still necessary?
+        // It seems Snap! is asynchronously loading the xml,
+        // despite there being no blocking action taking place.
+        setTimeout(place_corral_cover, 100);
+      });
   $(".btn-top").eq(current_lesson).button('toggle');
   $(".btn-top").eq(current_lesson).click();
   $("#next-button").on('click', next_lesson);
