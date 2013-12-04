@@ -34,18 +34,6 @@ body {
   width: 6em;
  }
 
-#left {
-  width: 25%;
-  height: 80%;
-  float: left;
-  overflow-y: auto;
-}
-
-#right {
-  height: 90%;
-  overflow: hidden;
-}
-
 .lab-page {
   padding: 1em;
   font-size: 1em;
@@ -96,6 +84,29 @@ body {
 
 #next-button {
 }
+
+#below {
+  position: absolute;
+  padding: 0.5em;
+  overflow: hidden;
+  top: 5em;
+  bottom: 0;
+}
+
+#left {
+  position: relative;
+  height: 100%;
+  width: 25%;
+  float: left;
+  overflow-y: auto;
+}
+
+#right {
+  position: relative;
+  height: 100%;
+  overflow: hidden;
+}
+
 
 #corral-cover {
   background-color: white;
