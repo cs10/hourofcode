@@ -271,7 +271,7 @@ function btn_click () {
     else {
       document.getElementById('snap').contentWindow.show_make_a_variable = false;
     }
-    //if (index !== 0 || !first_click) {
+    // If this is the first click, then the project has already been loaded.
     if (!first_click) {
       get_proj_xml ( name + ".xml", partial_load_xml);
     }
@@ -317,15 +317,15 @@ function prepare_modal(idx, callback) {
     $.ajax({
       url : "modaltext/" + btn_to_name[idx] + "_modal.html",
       dataType: "text",
-                success : function (data) {
-                  $('.modal-body').html(data);
-                  $('.modal-body').append($('<button>',
-                    {class:'btn btn-lg btn-primary', style: 'margin-left:80%;', text:'OK'}
-                    ).click(function () {
-                      $('#myModal').modal('toggle');
-                  }));
-                  callback();
-                }
+      success : function (data) {
+        $('.modal-body').html(data);
+        $('.modal-body').append($('<button>',
+          {class:'btn btn-lg btn-primary', style: 'margin-left:80%;', text:'OK'}
+          ).click(function () {
+            $('#myModal').modal('toggle');
+        }));
+        callback();
+      }
     });
   });
 }
