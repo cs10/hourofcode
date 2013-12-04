@@ -369,8 +369,8 @@ $(window).load(function () {
   load_project_uri ( btn_to_name[current_lesson] + '.xml' );
   $(".btn-top").eq(current_lesson).button('toggle');
   $(".btn-top").eq(current_lesson).click();
-  place_corral_cover();
   $("#next-button").on('click', next_lesson);
+  setTimeout(place_corral_cover, 0);
 });
 
 $(window).resize(function () {
