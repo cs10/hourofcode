@@ -10,10 +10,13 @@ var waitForFinalEvent = (function () {
 
 var current_lesson = 0;
 
-function load_project_uri(uri) {
+function load_project_uri(uri, callback) {
   var request = new XMLHttpRequest ();
   request.onload = function () {
     load_project_xml ( this.responseText );
+    if (callback) {
+      callback ();
+    }
   };
   request.open("get", uri, true);
   request.send();
@@ -366,11 +369,10 @@ $(window).load(function () {
       {class:'btn-top btn btn-lg btn-default'})
       .text('#' + (i + 1)).data('index', i).on('click', btn_click));
     }
-  load_project_uri ( btn_to_name[current_lesson] + '.xml' );
+  load_project_uri ( btn_to_name[current_lesson] + '.xml', place_corral_cover );
   $(".btn-top").eq(current_lesson).button('toggle');
   $(".btn-top").eq(current_lesson).click();
   $("#next-button").on('click', next_lesson);
-  setTimeout(place_corral_cover, 0);
 });
 
 $(window).resize(function () {
