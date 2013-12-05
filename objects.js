@@ -2104,6 +2104,10 @@ SpriteMorph.prototype.freshPalette = function (category) {
                 block = definition.templateInstance();
                 y += unit * 0.3;
                 block.setPosition(new Point(x, y));
+                if (stage.newPrimitives[block.blockSpec.replace(/ /g, '_')]) {
+                  block.highlight(new Color(0, 0, 0), 100, 100);
+                  block.addHighlight();
+                  }
                 palette.addContents(block);
                 x = 0;
                 y += block.height();
