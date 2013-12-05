@@ -205,9 +205,8 @@ function do_it_for_me() {
         function (xml) {
           partial_load_xml(current_xml, xml);
         });
-  } else {
-    load_project_uri("bjchoc_10.xml");
   }
+  // The do it for me button should not exist otherwise.
 }
 
 function fix_code() {
