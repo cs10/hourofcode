@@ -345,19 +345,20 @@ $(document).ready(function () {
   document.getElementById('snap').contentWindow.corralCover = $('#corral-cover');
   document.getElementById('snap').contentWindow.dont_export_hidden = true;
   $(".modal").click( function() { killvideo(); } );
+  var is_chrome = navigator.userAgent.toLowerCase().indexOf('chrome') > -1;
+  if (!(is_chrome)) {
+    $('#snap').attr('src', '');
+    $("#right").empty();
+    $("#myModal").remove();
+    $("#right").append("<div id='chrome-message'>Welcome to our Hour of Code! Please use us on <a href='http://www.google.com/chrome' target='_blank'>Google Chrome</a>.</div>");
+    $("#chrome-message").show();
+  }
 });
 
 var first_lesson_loaded = false;
 
 var first_click = true;
 $(window).load(function () {
-  var is_chrome = navigator.userAgent.toLowerCase().indexOf('chrome') > -1;
-  if (!(is_chrome)) {
-    $("#right").empty();
-    $("#myModal").remove();
-    $("#right").append("<div id='chrome-message'>Welcome to our Hour of Code! Please use us on <a href='http://www.google.com/chrome' target='_blank'>Google Chrome</a>.</div>");
-    $("#chrome-message").show();
-  }
   var top_buttons = $('#buttons-top')
   var i;
 
