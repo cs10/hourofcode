@@ -291,7 +291,7 @@ function btn_click () {
   if (current_lesson + 1 === btn_to_name.length) {
     $('#done-button').removeClass('hidden');
     $('#snaplogo-img').addClass('hidden');
-    $('#made-with').addClass('hidden');
+    $('#page-subtitle').addClass('hidden');
     $('#next-button').addClass('hidden');
   }
   else {
